@@ -1,7 +1,7 @@
 import type { ChatMessage } from "@/lib/types";
 import { formatTime } from "@/lib/format";
 import { AttachmentChip } from "./AttachmentChip";
-import { ClassificationCard } from "./ClassificationCard";
+import { ClassificationCard, Citations } from "./ClassificationCard";
 import { SparkIcon } from "./icons";
 
 function renderContent(text: string) {
@@ -20,6 +20,11 @@ function renderContent(text: string) {
 
 export function MessageBubble({ message }: { message: ChatMessage }) {
   const isUser = message.role === "user";
+  const classification = message.classification;
+  const mode = classification?.mode ?? "classification";
+  const showCard = !isUser && !!classification && mode === "classification";
+  const showQaCitations =
+    !isUser && !!classification && mode === "qa" && classification.sources.length > 0;
   return (
     <div className={`flex gap-3 ${isUser ? "flex-row-reverse" : "flex-row"}`}>
       <div
@@ -34,7 +39,7 @@ export function MessageBubble({ message }: { message: ChatMessage }) {
       </div>
       <div
         className={`flex flex-col ${isUser ? "items-end" : "items-start"} ${
-          !isUser && message.classification ? "max-w-[92%]" : "max-w-[78%]"
+          showCard || showQaCitations ? "max-w-[92%]" : "max-w-[78%]"
         }`}
       >
         <div
@@ -54,8 +59,13 @@ export function MessageBubble({ message }: { message: ChatMessage }) {
               ))}
             </div>
           )}
-          {!isUser && message.classification && (
-            <ClassificationCard classification={message.classification} />
+          {showCard && classification && (
+            <ClassificationCard classification={classification} />
+          )}
+          {showQaCitations && classification && (
+            <div className="mt-3 border-t border-black/5 pt-3 dark:border-white/10">
+              <Citations sources={classification.sources} />
+            </div>
           )}
         </div>
         <span className="mt-1 px-1 text-[11px] opacity-50">

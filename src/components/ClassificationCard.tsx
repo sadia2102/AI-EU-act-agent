@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { Classification, RiskLevel, Scenario } from "@/lib/types";
+import type { Classification, RiskLevel, Scenario, Source } from "@/lib/types";
 
 const RISK_STYLES: Record<RiskLevel, { label: string; className: string }> = {
   prohibited: {
@@ -77,6 +77,25 @@ function CopyJsonButton({ scenario }: { scenario: Scenario }) {
     >
       {copied ? "Copied!" : "Copy JSON"}
     </button>
+  );
+}
+
+export function Citations({ sources }: { sources: Source[] }) {
+  if (sources.length === 0) return null;
+  return (
+    <div>
+      <p className="mb-1 text-xs font-semibold uppercase tracking-wide opacity-60">
+        Citations
+      </p>
+      <ul className="space-y-0.5 text-xs opacity-80">
+        {sources.map((s) => (
+          <li key={s.index} className="font-mono">
+            ({s.index}) [{s.source}; {s.doc_id}; chunk_index=
+            {String(s.chunk_index ?? "n/a")}]
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -159,21 +178,7 @@ export function ClassificationCard({
         </div>
       )}
 
-      {sources.length > 0 && (
-        <div>
-          <p className="mb-1 text-xs font-semibold uppercase tracking-wide opacity-60">
-            Citations
-          </p>
-          <ul className="space-y-0.5 text-xs opacity-80">
-            {sources.map((s) => (
-              <li key={s.index} className="font-mono">
-                ({s.index}) [{s.source}; {s.doc_id}; chunk_index=
-                {String(s.chunk_index ?? "n/a")}]
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <Citations sources={sources} />
     </div>
   );
 }

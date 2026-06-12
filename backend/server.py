@@ -33,6 +33,7 @@ from pydantic import BaseModel
 from rag_chat import (
     pre_retrieve,
     build_context,
+    build_messages,
     LLM_BACKEND,
     OPENAI_MODEL,
     OLLAMA_MODEL,
@@ -118,6 +119,9 @@ class ChatResponse(BaseModel):
     processing_time: float
     # The full scenario schema, suitable for "Copy JSON" in the UI.
     scenario: Optional[Scenario] = None
+    # How the message was handled: "classification" (risk card), "qa" (general
+    # answer with citations, no card), or "clarification" (a follow-up question).
+    mode: str = "classification"
 
 
 def _structured_messages(question: str, context_block: str) -> List[Dict[str, str]]:
@@ -319,7 +323,9 @@ def _clean_obligations(raw: List[str]) -> List[str]:
     return cleaned[:12]
 
 
-def _empty_response(analysis: str, start: float, used_deep_research: bool) -> ChatResponse:
+def _empty_response(
+    analysis: str, start: float, used_deep_research: bool, mode: str = "classification"
+) -> ChatResponse:
     return ChatResponse(
         analysis=analysis,
         risk_level="unknown",
@@ -328,7 +334,88 @@ def _empty_response(analysis: str, start: float, used_deep_research: bool) -> Ch
         sources=[],
         used_deep_research=used_deep_research,
         processing_time=time.time() - start,
+        mode=mode,
     )
+
+
+def _articles_from_text(text: str) -> List[int]:
+    """Pull unique Article numbers from free-form text (QA path fallback)."""
+    if SCENARIO_AVAILABLE:
+        try:
+            return extract_articles(text)
+        except Exception:
+            pass
+    nums = {int(m) for m in re.findall(r"Article\s+(\d+)", text or "")}
+    return sorted(nums)
+
+
+def _route_intent(message: str, document_text: Optional[str]) -> Dict[str, Any]:
+    """Decide how to handle the message: a scenario to classify, a general
+    question to answer, or a vague scenario that needs a clarifying question."""
+    blob = message.strip()
+    if document_text and document_text.strip():
+        blob += "\n\n[The user also attached a document for context.]"
+
+    system = (
+        "You triage messages for an EU AI Act assistant. Decide how to handle the "
+        "user's message and return ONLY a JSON object with keys: "
+        '"intent" ("scenario" or "question"), "sufficient" (boolean), '
+        'and "clarifying_question" (string).\n'
+        "- intent='scenario': the user describes a specific AI system or use-case "
+        "and wants its EU AI Act risk level / obligations.\n"
+        "- intent='question': a general informational or legal question about the "
+        "AI Act (scope, definitions, what an article says, whether it applies to X).\n"
+        "- sufficient: default to TRUE. Set sufficient=false ONLY when the message "
+        "gives essentially no indication of what the AI system DOES or its PURPOSE, "
+        "so a risk level cannot be guessed at all. If the message names a concrete "
+        "function or use (e.g. screening job applicants, ranking CVs, audio nudging "
+        "of shoppers, facial recognition, a customer chatbot), it IS sufficient \u2014 "
+        "classify it even if minor fields (inputs, exact role) are missing. Do NOT "
+        "ask for extra detail just to be thorough.\n"
+        "- When sufficient=false, put ONE short, specific follow-up in clarifying_question.\n"
+        "- For intent='question', always set sufficient=true and clarifying_question=\"\".\n"
+        "Examples:\n"
+        '"I built an AI system. What risk level is it?" -> '
+        '{"intent":"scenario","sufficient":false,"clarifying_question":"What does the system do, and what is its intended purpose?"}\n'
+        '"We screen job applicants with an AI CV-ranking tool." -> '
+        '{"intent":"scenario","sufficient":true,"clarifying_question":""}\n'
+        '"As a provider we deploy a hidden-audio platform that nudges shoppers to buy products without their awareness." -> '
+        '{"intent":"scenario","sufficient":true,"clarifying_question":""}\n'
+        '"Does the AI Act apply to military systems?" -> '
+        '{"intent":"question","sufficient":true,"clarifying_question":""}'
+    )
+    messages = [{"role": "system", "content": system}, {"role": "user", "content": blob}]
+
+    intent, sufficient, clarifying = "scenario", True, ""
+    try:
+        parsed = json.loads(_strip_fences(_complete(messages)))
+        if isinstance(parsed, dict):
+            cand = str(parsed.get("intent", "")).strip().lower()
+            if cand in ("scenario", "question"):
+                intent = cand
+            sufficient = bool(parsed.get("sufficient", True))
+            cq = parsed.get("clarifying_question")
+            if isinstance(cq, str):
+                clarifying = cq.strip()
+    except Exception:
+        pass
+
+    if intent == "question":
+        sufficient, clarifying = True, ""
+    return {"intent": intent, "sufficient": sufficient, "clarifying_question": clarifying}
+
+
+def _retrieve_with_upload(query: str, req: "ChatRequest"):
+    """Retrieve grounding chunks and append any user-uploaded document as a
+    citeable source."""
+    docs, metas, scores = pre_retrieve(query, fast=req.fast)
+    if req.document_text and req.document_text.strip():
+        docs = list(docs) + [req.document_text.strip()]
+        metas = list(metas) + [
+            {"source": "user-upload", "doc_id": "uploaded-document", "chunk_index": 0}
+        ]
+        scores = list(scores) + [1.0]
+    return docs, metas, scores
 
 
 @app.post("/chat", response_model=ChatResponse)
@@ -336,6 +423,48 @@ def chat(req: ChatRequest) -> ChatResponse:
     start = time.time()
     question = req.message.strip()
 
+    route = _route_intent(question, req.document_text)
+
+    # The scenario is too vague to classify: ask the user for the missing detail
+    # instead of guessing a risk level.
+    if route["intent"] == "scenario" and not route["sufficient"]:
+        clarifying = route["clarifying_question"] or (
+            "Could you tell me a bit more about the AI system \u2014 what it does, "
+            "who provides or deploys it, and its intended purpose? That lets me "
+            "classify its EU AI Act risk level accurately."
+        )
+        return _empty_response(clarifying, start, False, mode="clarification")
+
+    # General question: answer directly from the corpus with citations, no card.
+    if route["intent"] == "question":
+        docs, metas, scores = _retrieve_with_upload(question, req)
+        if not docs:
+            if DEEP_RESEARCH_AVAILABLE and run_deep_research is not None:
+                try:
+                    research = run_deep_research(question)
+                    analysis = research if isinstance(research, str) else str(research)
+                except Exception as exc:  # pragma: no cover
+                    analysis = f"Deep research fallback failed: {exc}"
+                return _empty_response(analysis, start, True, mode="qa")
+            return _empty_response(
+                "No relevant context was found for this question.", start, False, mode="qa"
+            )
+        context_block = build_context(docs, metas)
+        sources = _sources_from_metas(metas, scores)
+        analysis = _complete(build_messages(question, context_block)).strip()
+        return ChatResponse(
+            analysis=analysis,
+            risk_level="unknown",
+            obligations=[],
+            articles=_articles_from_text(analysis),
+            sources=sources,
+            used_deep_research=False,
+            processing_time=time.time() - start,
+            scenario=None,
+            mode="qa",
+        )
+
+    # Otherwise: a scenario with enough detail -> full risk classification.
     # Build the scenario (role/intended_use/...) and the retrieval query. When the
     # project's scenario_batch_rag.py is available we use its exact query builder.
     scenario_fields = _extract_scenario_fields(question, req.document_text)
@@ -344,15 +473,7 @@ def chat(req: ChatRequest) -> ChatResponse:
     else:
         query = question
 
-    docs, metas, scores = pre_retrieve(query, fast=req.fast)
-
-    # Incorporate the user's uploaded document(s) as an extra, citeable source.
-    if req.document_text and req.document_text.strip():
-        docs = list(docs) + [req.document_text.strip()]
-        metas = list(metas) + [
-            {"source": "user-upload", "doc_id": "uploaded-document", "chunk_index": 0}
-        ]
-        scores = list(scores) + [1.0]
+    docs, metas, scores = _retrieve_with_upload(query, req)
 
     if not docs:
         # No grounding context: fall back to iterative deep research if available.

@@ -33,6 +33,8 @@ export interface Scenario {
   risk_level: RiskLevel;
 }
 
+export type ReplyMode = "classification" | "qa" | "clarification";
+
 export interface Classification {
   riskLevel: RiskLevel;
   obligations: string[];
@@ -40,6 +42,7 @@ export interface Classification {
   sources: Source[];
   usedDeepResearch?: boolean;
   scenario?: Scenario | null;
+  mode?: ReplyMode;
 }
 
 export interface ChatMessage {
