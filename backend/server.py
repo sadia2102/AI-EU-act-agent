@@ -293,6 +293,32 @@ def health() -> Dict[str, Any]:
     }
 
 
+def _clean_obligations(raw: List[str]) -> List[str]:
+    """Tidy the obligations parsed from free-form analysis text: strip markdown,
+    drop section headers/fragments, and de-duplicate while keeping order."""
+    cleaned: List[str] = []
+    seen: set = set()
+    for item in raw:
+        text = re.sub(r"^[\s\*#\-\d\.\)]+", "", str(item)).replace("**", "").strip()
+        if len(text) < 25:
+            continue
+        # Drop leftover fragments that start mid-word/lowercase (e.g. "s: If ...").
+        if not text[0].isupper():
+            continue
+        # Drop bare article references; articles are listed separately.
+        if re.match(r"^Article\s+\d", text):
+            continue
+        # Skip headings like "Specific Obligations and Requirements".
+        if ":" not in text and not re.search(r"\b(must|shall|should|ensure|provide|maintain|conduct|implement|register|cease|halt|notify|comply|document|carry out|establish)\b", text, re.IGNORECASE):
+            continue
+        key = text.lower()[:50]
+        if key in seen:
+            continue
+        seen.add(key)
+        cleaned.append(text)
+    return cleaned[:12]
+
+
 def _empty_response(analysis: str, start: float, used_deep_research: bool) -> ChatResponse:
     return ChatResponse(
         analysis=analysis,
@@ -348,7 +374,7 @@ def chat(req: ChatRequest) -> ChatResponse:
         # Mirror scenario_batch_rag: free-form analysis, then extract + calibrate.
         analysis = _complete(build_scenario_messages(query, context_block)).strip()
         generated_risk = extract_risk_level(analysis)
-        obligations = extract_obligations(analysis)
+        obligations = _clean_obligations(extract_obligations(analysis))
         articles = extract_articles(analysis)
         risk_level = calibrate_risk_level(generated_risk, scenario_fields)
         if risk_level not in ALLOWED_RISK:
