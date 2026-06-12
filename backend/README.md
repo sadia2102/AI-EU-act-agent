@@ -40,11 +40,32 @@ export OPENAI_API_KEY="sk-..."           # required (OpenAI backend)
 ```
 
 Make sure ChromaDB is running and populated (the collection `research_chunks`
-on `localhost:8000`, as configured in `rag_chat.py`):
+on `localhost:8000`, as configured in `rag_chat.py`). Point `--path` at the
+folder that holds your existing data:
 
 ```bash
-chroma run --host localhost --port 8000
+chroma run --path "/path/to/your/chroma_db" --host localhost --port 8000
 ```
+
+Verify the collection actually has your chunks (must print a non-zero number):
+
+```bash
+python -c "import chromadb; c=chromadb.HttpClient(host='localhost',port=8000); print(c.get_collection('research_chunks').count())"
+```
+
+### Rebuild the index from `text_chunks.tsv`
+
+If the count is `0` or the collection is missing, repopulate it from your TSV
+(tab-separated `doc_id<TAB>text` lines). Copy `text_chunks.tsv` into `backend/`
+and run, while `chroma run` is up:
+
+```bash
+python ingest_tsv.py
+```
+
+This creates the `research_chunks` collection with the metadata the pipeline
+expects (`source=thesis_text_chunks_v1`, `doc_id`, `chunk_index`, `length`) and
+embeds with `all-MiniLM-L6-v2`.
 
 ## 3. Run the API
 
