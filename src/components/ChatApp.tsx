@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { Attachment, ChatMessage } from "@/lib/types";
+import type { Attachment, ChatMessage, Classification } from "@/lib/types";
 import { generateMockReply, replyDelay } from "@/lib/mockAgent";
+import { fetchAgentReply, isApiConfigured } from "@/lib/api";
 import { Composer } from "./Composer";
 import { MessageBubble } from "./MessageBubble";
 import { TypingIndicator } from "./TypingIndicator";
@@ -34,11 +35,15 @@ function createUserMessage(
   };
 }
 
-function createAssistantMessage(content: string): ChatMessage {
+function createAssistantMessage(
+  content: string,
+  classification?: Classification,
+): ChatMessage {
   return {
     id: newId("assistant"),
     role: "assistant",
     content,
+    classification,
     createdAt: Date.now(),
   };
 }
@@ -55,15 +60,34 @@ export function ChatApp() {
     });
   }, [messages, isTyping]);
 
-  function send(text: string, attachments: Attachment[]) {
+  async function send(
+    text: string,
+    attachments: Attachment[],
+    documentText?: string,
+  ) {
     setMessages((prev) => [...prev, createUserMessage(text, attachments)]);
     setIsTyping(true);
 
-    window.setTimeout(() => {
-      const reply = createAssistantMessage(generateMockReply(text, attachments));
-      setMessages((prev) => [...prev, reply]);
-      setIsTyping(false);
-    }, replyDelay());
+    if (isApiConfigured()) {
+      try {
+        const reply = await fetchAgentReply(text, documentText);
+        setMessages((prev) => [
+          ...prev,
+          createAssistantMessage(reply.content, reply.classification),
+        ]);
+        setIsTyping(false);
+        return;
+      } catch {
+        // Backend unreachable: fall through to the built-in mock so the demo works.
+      }
+    }
+
+    await new Promise((resolve) => window.setTimeout(resolve, replyDelay()));
+    setMessages((prev) => [
+      ...prev,
+      createAssistantMessage(generateMockReply(text, attachments)),
+    ]);
+    setIsTyping(false);
   }
 
   const isEmpty = messages.length === 0;

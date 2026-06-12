@@ -14,7 +14,29 @@ interface PendingFile extends Attachment {
 
 interface ComposerProps {
   disabled?: boolean;
-  onSend: (text: string, attachments: Attachment[]) => void;
+  onSend: (
+    text: string,
+    attachments: Attachment[],
+    documentText?: string,
+  ) => void;
+}
+
+const TEXT_READABLE = /^(text\/|application\/(json|xml|csv))/;
+const TEXT_EXTENSIONS = /\.(txt|md|markdown|csv|json|xml|rtf|log)$/i;
+const MAX_DOC_CHARS = 20000;
+
+async function readDocumentText(files: PendingFile[]): Promise<string> {
+  const readable = files.filter(
+    (p) => TEXT_READABLE.test(p.type) || TEXT_EXTENSIONS.test(p.name),
+  );
+  if (readable.length === 0) return "";
+  const parts = await Promise.all(
+    readable.map(async (p) => {
+      const content = (await p.file.text()).slice(0, MAX_DOC_CHARS);
+      return `--- ${p.name} ---\n${content}`;
+    }),
+  );
+  return parts.join("\n\n");
 }
 
 let idCounter = 0;
@@ -50,7 +72,7 @@ export function Composer({ disabled, onSend }: ComposerProps) {
     if (textareaRef.current) textareaRef.current.style.height = "auto";
   }
 
-  function handleSend() {
+  async function handleSend() {
     const trimmed = text.trim();
     if (disabled || (!trimmed && pending.length === 0)) return;
     const attachments: Attachment[] = pending.map((p) => ({
@@ -59,7 +81,8 @@ export function Composer({ disabled, onSend }: ComposerProps) {
       size: p.size,
       type: p.type,
     }));
-    onSend(trimmed, attachments);
+    const documentText = await readDocumentText(pending);
+    onSend(trimmed, attachments, documentText || undefined);
     setText("");
     setPending([]);
     resetTextarea();

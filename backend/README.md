@@ -1,0 +1,94 @@
+# Backend API (EU AI Act Assistant)
+
+A thin [FastAPI](https://fastapi.tiangolo.com/) wrapper around the existing RAG
+pipeline so the Next.js frontend can call it over HTTP. It reuses your own
+modules — it does **not** reimplement retrieval or the LLM call.
+
+## 1. Put your pipeline files here
+
+Copy your existing scripts into this `backend/` folder next to `server.py`:
+
+```
+backend/
+  server.py                 # provided (the API)
+  requirements.txt          # provided
+  rag_chat.py               # YOURS  (pre_retrieve, build_context, LLM config)
+  openai_deep_research.py   # YOURS  (run_deep_research — optional fallback)
+  scenario_batch_rag.py     # YOURS  (optional)
+  batch_rag.py              # YOURS  (optional)
+```
+
+> **Security:** remove the hardcoded `OPENAI_API_KEY = "sk-..."` line from
+> `rag_chat.py`. The code already falls back to `os.environ["OPENAI_API_KEY"]`.
+> Rotate that key — it was committed in plaintext.
+
+## 2. Install & configure
+
+```bash
+cd backend
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+
+export OPENAI_API_KEY="sk-..."           # required (OpenAI backend)
+# export CORS_ORIGINS="http://localhost:3000"   # optional, this is the default
+```
+
+Make sure ChromaDB is running and populated (the collection `research_chunks`
+on `localhost:8000`, as configured in `rag_chat.py`):
+
+```bash
+chroma run --host localhost --port 8000
+```
+
+## 3. Run the API
+
+`rag_chat.py` points Chroma at port 8000, so run the API on a **different port**
+(e.g. 8008):
+
+```bash
+uvicorn server:app --host 0.0.0.0 --port 8008 --reload
+```
+
+Quick check:
+
+```bash
+curl localhost:8008/health
+curl -X POST localhost:8008/chat -H 'Content-Type: application/json' \
+  -d '{"message":"What transparency obligations apply to GPAI providers?"}'
+```
+
+## 4. Point the frontend at it
+
+In the repo root, create `.env.local`:
+
+```
+NEXT_PUBLIC_API_URL=http://localhost:8008
+```
+
+Then `npm run dev`. When `NEXT_PUBLIC_API_URL` is set the UI calls this API; if
+it is unset or unreachable, the UI falls back to its built-in mock so the demo
+still works offline.
+
+## API
+
+`POST /chat`
+
+```jsonc
+// request
+{ "message": "string", "document_text": "optional string", "fast": false }
+
+// response
+{
+  "analysis": "string with [source; doc_id; chunk_index=K] citations",
+  "risk_level": "prohibited | high-risk | limited-risk | minimal-risk | unknown",
+  "obligations": ["...", "..."],
+  "articles": [5, 10, 27],
+  "sources": [{ "index": 1, "source": "...", "doc_id": "...", "chunk_index": 3, "score": 0.7 }],
+  "used_deep_research": false,
+  "processing_time": 2.5
+}
+```
+
+Uploaded documents: the frontend sends the plain text of attached files as
+`document_text`; the server adds it as an extra citeable source
+(`user-upload`) so the model can classify the user's own scenario.

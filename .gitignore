@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.local.example
 
 # vercel
 .vercel
@@ -39,3 +40,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# python backend
+backend/.venv/
+backend/__pycache__/
+backend/*.pyc
+# user's own pipeline files live next to server.py but are not part of this repo
+backend/rag_chat.py
+backend/batch_rag.py
+backend/scenario_batch_rag.py
+backend/openai_deep_research.py

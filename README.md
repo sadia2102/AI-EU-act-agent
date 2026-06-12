@@ -3,9 +3,14 @@
 A chatbot-style frontend where the assistant can also accept documents. Built
 with **Next.js (App Router) + TypeScript + Tailwind CSS**.
 
-> This is a **frontend design / demo**: assistant replies are simulated locally
-> (`src/lib/mockAgent.ts`) and uploaded files are kept in browser memory only —
-> nothing is sent to a server.
+It can run in two modes:
+
+- **Demo mode (default):** assistant replies are simulated locally
+  (`src/lib/mockAgent.ts`); uploaded files stay in browser memory.
+- **Connected mode:** set `NEXT_PUBLIC_API_URL` and the UI calls the RAG backend
+  in [`backend/`](./backend), which classifies the EU AI Act **risk level** and
+  returns **obligations**, **articles**, and **citations**. If the backend is
+  unreachable it falls back to demo mode automatically.
 
 ## Features
 
@@ -41,17 +46,32 @@ src/
     AttachmentChip.tsx
     TypingIndicator.tsx
     icons.tsx
+    ClassificationCard.tsx # risk badge + obligations + articles + citations
   lib/
-    types.ts          # ChatMessage / Attachment types
-    mockAgent.ts      # simulated responses
+    types.ts          # ChatMessage / Attachment / Classification types
+    mockAgent.ts      # simulated responses (demo mode)
+    api.ts            # calls the backend /chat endpoint (connected mode)
     format.ts         # byte/time formatting helpers
+backend/
+  server.py           # FastAPI wrapper around the existing RAG pipeline
+  requirements.txt
+  README.md           # how to run the backend
 ```
 
-## Wiring up a real backend
+## Connecting the backend
 
-Replace the simulated reply in `ChatApp.send()` with a call to your API and
-upload `Attachment` files to your storage/LLM of choice. The UI is structured so
-only that one function needs to change.
+The chat UI talks to a FastAPI `POST /chat` endpoint that reuses the project's
+existing RAG pipeline (`rag_chat.py` + Chroma + OpenAI/Ollama). See
+[`backend/README.md`](./backend/README.md) for setup. In short:
+
+```bash
+cp .env.local.example .env.local   # NEXT_PUBLIC_API_URL=http://localhost:8008
+```
+
+With `NEXT_PUBLIC_API_URL` set, `ChatApp.send()` calls the API and renders the
+risk classification, obligations, articles, and citations. Attached text
+documents are sent as `document_text` so the agent can classify the user's own
+scenario.
 
 ## Scripts
 

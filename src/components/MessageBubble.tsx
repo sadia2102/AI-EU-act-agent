@@ -1,6 +1,7 @@
 import type { ChatMessage } from "@/lib/types";
 import { formatTime } from "@/lib/format";
 import { AttachmentChip } from "./AttachmentChip";
+import { ClassificationCard } from "./ClassificationCard";
 import { SparkIcon } from "./icons";
 
 function renderContent(text: string) {
@@ -48,6 +49,9 @@ export function MessageBubble({ message }: { message: ChatMessage }) {
                 <AttachmentChip key={a.id} attachment={a} variant="message" />
               ))}
             </div>
+          )}
+          {!isUser && message.classification && (
+            <ClassificationCard classification={message.classification} />
           )}
         </div>
         <span className="mt-1 px-1 text-[11px] opacity-50">
