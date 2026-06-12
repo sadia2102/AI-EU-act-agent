@@ -32,7 +32,11 @@ export function MessageBubble({ message }: { message: ChatMessage }) {
       >
         {isUser ? "You" : <SparkIcon className="h-4 w-4" />}
       </div>
-      <div className={`flex max-w-[78%] flex-col ${isUser ? "items-end" : "items-start"}`}>
+      <div
+        className={`flex flex-col ${isUser ? "items-end" : "items-start"} ${
+          !isUser && message.classification ? "max-w-[92%]" : "max-w-[78%]"
+        }`}
+      >
         <div
           className={`rounded-2xl px-4 py-2.5 text-sm leading-relaxed shadow-sm ${
             isUser

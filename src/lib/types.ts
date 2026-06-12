@@ -22,12 +22,24 @@ export interface Source {
   score?: number | null;
 }
 
+export interface Scenario {
+  role: string;
+  intended_use: string;
+  system_type: string;
+  input_data: string;
+  domain: string;
+  related_articles: number[];
+  obligations: string[];
+  risk_level: RiskLevel;
+}
+
 export interface Classification {
   riskLevel: RiskLevel;
   obligations: string[];
   articles: number[];
   sources: Source[];
   usedDeepResearch?: boolean;
+  scenario?: Scenario | null;
 }
 
 export interface ChatMessage {

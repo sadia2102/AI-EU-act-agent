@@ -1,4 +1,7 @@
-import type { Classification, RiskLevel } from "@/lib/types";
+"use client";
+
+import { useState } from "react";
+import type { Classification, RiskLevel, Scenario } from "@/lib/types";
 
 const RISK_STYLES: Record<RiskLevel, { label: string; className: string }> = {
   prohibited: {
@@ -38,17 +41,68 @@ export function RiskBadge({ level }: { level: RiskLevel }) {
   );
 }
 
+function scenarioJson(scenario: Scenario): string {
+  return JSON.stringify(
+    {
+      role: scenario.role,
+      intended_use: scenario.intended_use,
+      system_type: scenario.system_type,
+      input_data: scenario.input_data,
+      domain: scenario.domain,
+      related_articles: scenario.related_articles,
+      obligations: scenario.obligations,
+      risk_level: scenario.risk_level,
+    },
+    null,
+    4,
+  );
+}
+
+function CopyJsonButton({ scenario }: { scenario: Scenario }) {
+  const [copied, setCopied] = useState(false);
+  async function copy() {
+    try {
+      await navigator.clipboard.writeText(scenarioJson(scenario));
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      setCopied(false);
+    }
+  }
+  return (
+    <button
+      type="button"
+      onClick={copy}
+      className="rounded-md border border-black/10 px-2 py-1 text-xs font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/10"
+    >
+      {copied ? "Copied!" : "Copy JSON"}
+    </button>
+  );
+}
+
+function MetaRow({ label, value }: { label: string; value?: string }) {
+  if (!value) return null;
+  return (
+    <div className="flex gap-2 text-xs">
+      <span className="shrink-0 font-semibold uppercase tracking-wide opacity-50">
+        {label}
+      </span>
+      <span className="opacity-90">{value}</span>
+    </div>
+  );
+}
+
 export function ClassificationCard({
   classification,
 }: {
   classification: Classification;
 }) {
-  const { riskLevel, obligations, articles, sources, usedDeepResearch } =
+  const { riskLevel, obligations, articles, sources, usedDeepResearch, scenario } =
     classification;
 
   const hasDetails =
     obligations.length > 0 || articles.length > 0 || sources.length > 0;
-  if (riskLevel === "unknown" && !hasDetails) return null;
+  if (riskLevel === "unknown" && !hasDetails && !scenario) return null;
 
   return (
     <div className="mt-3 flex flex-col gap-3 border-t border-black/5 pt-3 dark:border-white/10">
@@ -59,7 +113,22 @@ export function ClassificationCard({
             deep research fallback
           </span>
         )}
+        {scenario && (
+          <span className="ml-auto">
+            <CopyJsonButton scenario={scenario} />
+          </span>
+        )}
       </div>
+
+      {scenario && (
+        <div className="flex flex-col gap-1 rounded-lg bg-black/[.03] p-2.5 dark:bg-white/[.04]">
+          <MetaRow label="Role" value={scenario.role} />
+          <MetaRow label="Use" value={scenario.intended_use} />
+          <MetaRow label="System" value={scenario.system_type} />
+          <MetaRow label="Inputs" value={scenario.input_data} />
+          <MetaRow label="Domain" value={scenario.domain} />
+        </div>
+      )}
 
       {obligations.length > 0 && (
         <div>

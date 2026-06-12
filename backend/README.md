@@ -13,10 +13,16 @@ backend/
   server.py                 # provided (the API)
   requirements.txt          # provided
   rag_chat.py               # YOURS  (pre_retrieve, build_context, LLM config)
+  scenario_batch_rag.py     # YOURS  (risk classification + obligations + articles)
   openai_deep_research.py   # YOURS  (run_deep_research — optional fallback)
-  scenario_batch_rag.py     # YOURS  (optional)
   batch_rag.py              # YOURS  (optional)
 ```
+
+> **`scenario_batch_rag.py` is what produces the full scenario output**
+> (role / intended_use / system_type / input_data / domain / related_articles /
+> obligations / risk_level), reusing its `build_scenario_query`,
+> `build_scenario_messages`, `extract_*`, and `calibrate_risk_level`. If it's not
+> present, the API degrades to a simpler strict-JSON classification.
 
 > **Security:** remove the hardcoded `OPENAI_API_KEY = "sk-..."` line from
 > `rag_chat.py`. The code already falls back to `os.environ["OPENAI_API_KEY"]`.
@@ -85,9 +91,25 @@ still works offline.
   "articles": [5, 10, 27],
   "sources": [{ "index": 1, "source": "...", "doc_id": "...", "chunk_index": 3, "score": 0.7 }],
   "used_deep_research": false,
-  "processing_time": 2.5
+  "processing_time": 2.5,
+  // full scenario schema (the UI's "Copy JSON" button copies this)
+  "scenario": {
+    "role": "Provider",
+    "intended_use": "...",
+    "system_type": "...",
+    "input_data": "...",
+    "domain": "...",
+    "related_articles": [5, 10, 27],
+    "obligations": ["..."],
+    "risk_level": "prohibited"
+  }
 }
 ```
+
+The server first asks the LLM to extract the scenario fields from the user's
+message (and any attached document), builds the retrieval query with
+`build_scenario_query`, runs retrieval + analysis, then extracts obligations /
+articles and calibrates the risk level — mirroring `scenario_batch_rag.py`.
 
 Uploaded documents: the frontend sends the plain text of attached files as
 `document_text`; the server adds it as an extra citeable source

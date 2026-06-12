@@ -1,4 +1,4 @@
-import type { Classification, RiskLevel, Source } from "./types";
+import type { Classification, RiskLevel, Scenario, Source } from "./types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -13,6 +13,7 @@ interface ChatApiResponse {
   articles: number[];
   sources: Source[];
   used_deep_research?: boolean;
+  scenario?: Scenario | null;
 }
 
 export interface AgentReply {
@@ -50,6 +51,7 @@ export async function fetchAgentReply(
       articles: data.articles ?? [],
       sources: data.sources ?? [],
       usedDeepResearch: data.used_deep_research,
+      scenario: data.scenario ?? null,
     },
   };
 }

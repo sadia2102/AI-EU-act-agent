@@ -45,6 +45,22 @@ except Exception:  # pragma: no cover - fallback is optional
     run_deep_research = None  # type: ignore
     DEEP_RESEARCH_AVAILABLE = False
 
+# Reuse the project's own scenario-analysis logic when scenario_batch_rag.py is
+# present. This gives the richer scenario schema (role/intended_use/.../risk_level)
+# and the exact risk calibration heuristics (e.g. subliminal -> prohibited).
+try:
+    from scenario_batch_rag import (
+        build_scenario_query,
+        build_scenario_messages,
+        extract_risk_level,
+        extract_obligations,
+        extract_articles,
+        calibrate_risk_level,
+    )
+    SCENARIO_AVAILABLE = True
+except Exception:  # pragma: no cover - degrade to the simple JSON path
+    SCENARIO_AVAILABLE = False
+
 
 ALLOWED_RISK = {"prohibited", "high-risk", "limited-risk", "minimal-risk", "unknown"}
 
@@ -81,6 +97,17 @@ class Source(BaseModel):
     score: Optional[float] = None
 
 
+class Scenario(BaseModel):
+    role: str = "Unknown"
+    intended_use: str = ""
+    system_type: str = ""
+    input_data: str = ""
+    domain: str = ""
+    related_articles: List[int] = []
+    obligations: List[str] = []
+    risk_level: str = "unknown"
+
+
 class ChatResponse(BaseModel):
     analysis: str
     risk_level: str
@@ -89,6 +116,8 @@ class ChatResponse(BaseModel):
     sources: List[Source]
     used_deep_research: bool = False
     processing_time: float
+    # The full scenario schema, suitable for "Copy JSON" in the UI.
+    scenario: Optional[Scenario] = None
 
 
 def _structured_messages(question: str, context_block: str) -> List[Dict[str, str]]:
@@ -163,6 +192,51 @@ def _parse_structured(text: str) -> Optional[Dict[str, Any]]:
     }
 
 
+def _extract_scenario_fields(message: str, document_text: Optional[str]) -> Dict[str, str]:
+    """Use the LLM to turn the user's free-text message into scenario fields."""
+    blob = message.strip()
+    if document_text and document_text.strip():
+        blob += "\n\nAttached document:\n" + document_text.strip()[:6000]
+
+    fields = {"role": "", "intended_use": "", "system_type": "", "input_data": "", "domain": ""}
+    messages = [
+        {
+            "role": "system",
+            "content": (
+                "Extract AI-system scenario fields from the user's text. "
+                "Return ONLY a JSON object with keys: role, intended_use, "
+                "system_type, input_data, domain. Use \"\" for anything not stated. "
+                "role is 'Provider' or 'Deployer' when inferable."
+            ),
+        },
+        {"role": "user", "content": blob},
+    ]
+    try:
+        parsed = json.loads(_strip_fences(_complete(messages)))
+        if isinstance(parsed, dict):
+            for key in fields:
+                value = parsed.get(key)
+                if isinstance(value, str):
+                    fields[key] = value.strip()
+    except Exception:
+        pass
+
+    # Always keep the raw question as intended_use if extraction gave nothing.
+    if not fields["intended_use"]:
+        fields["intended_use"] = message.strip()
+    if not fields["role"]:
+        fields["role"] = "Provider"
+    return fields
+
+
+def _strip_fences(text: str) -> str:
+    cleaned = (text or "").strip()
+    cleaned = re.sub(r"^```json\s*", "", cleaned, flags=re.IGNORECASE)
+    cleaned = cleaned.strip().strip("`").strip()
+    match = re.search(r"\{.*\}", cleaned, flags=re.DOTALL)
+    return match.group(0) if match else cleaned
+
+
 def _complete(messages: List[Dict[str, str]]) -> str:
     """Non-streaming completion using the configured backend."""
     if LLM_BACKEND == "openai":
@@ -219,12 +293,32 @@ def health() -> Dict[str, Any]:
     }
 
 
+def _empty_response(analysis: str, start: float, used_deep_research: bool) -> ChatResponse:
+    return ChatResponse(
+        analysis=analysis,
+        risk_level="unknown",
+        obligations=[],
+        articles=[],
+        sources=[],
+        used_deep_research=used_deep_research,
+        processing_time=time.time() - start,
+    )
+
+
 @app.post("/chat", response_model=ChatResponse)
 def chat(req: ChatRequest) -> ChatResponse:
     start = time.time()
     question = req.message.strip()
 
-    docs, metas, scores = pre_retrieve(question, fast=req.fast)
+    # Build the scenario (role/intended_use/...) and the retrieval query. When the
+    # project's scenario_batch_rag.py is available we use its exact query builder.
+    scenario_fields = _extract_scenario_fields(question, req.document_text)
+    if SCENARIO_AVAILABLE:
+        query = build_scenario_query(scenario_fields)
+    else:
+        query = question
+
+    docs, metas, scores = pre_retrieve(query, fast=req.fast)
 
     # Incorporate the user's uploaded document(s) as an extra, citeable source.
     if req.document_text and req.document_text.strip():
@@ -234,37 +328,53 @@ def chat(req: ChatRequest) -> ChatResponse:
         ]
         scores = list(scores) + [1.0]
 
-    used_deep_research = False
-
     if not docs:
         # No grounding context: fall back to iterative deep research if available.
         if DEEP_RESEARCH_AVAILABLE and run_deep_research is not None:
-            used_deep_research = True
             try:
                 research = run_deep_research(question)
                 analysis = research if isinstance(research, str) else str(research)
             except Exception as exc:  # pragma: no cover
                 analysis = f"Deep research fallback failed: {exc}"
-            return ChatResponse(
-                analysis=analysis,
-                risk_level="unknown",
-                obligations=[],
-                articles=[],
-                sources=[],
-                used_deep_research=True,
-                processing_time=time.time() - start,
-            )
-        return ChatResponse(
-            analysis="No relevant context was found for this question.",
-            risk_level="unknown",
-            obligations=[],
-            articles=[],
-            sources=[],
-            used_deep_research=False,
-            processing_time=time.time() - start,
+            return _empty_response(analysis, start, used_deep_research=True)
+        return _empty_response(
+            "No relevant context was found for this question.", start, False
         )
 
     context_block = build_context(docs, metas)
+    sources = _sources_from_metas(metas, scores)
+
+    if SCENARIO_AVAILABLE:
+        # Mirror scenario_batch_rag: free-form analysis, then extract + calibrate.
+        analysis = _complete(build_scenario_messages(query, context_block)).strip()
+        generated_risk = extract_risk_level(analysis)
+        obligations = extract_obligations(analysis)
+        articles = extract_articles(analysis)
+        risk_level = calibrate_risk_level(generated_risk, scenario_fields)
+        if risk_level not in ALLOWED_RISK:
+            risk_level = "unknown"
+        scenario = Scenario(
+            role=scenario_fields.get("role", "Unknown") or "Unknown",
+            intended_use=scenario_fields.get("intended_use", ""),
+            system_type=scenario_fields.get("system_type", ""),
+            input_data=scenario_fields.get("input_data", ""),
+            domain=scenario_fields.get("domain", ""),
+            related_articles=articles,
+            obligations=obligations,
+            risk_level=risk_level,
+        )
+        return ChatResponse(
+            analysis=analysis,
+            risk_level=risk_level,
+            obligations=obligations,
+            articles=articles,
+            sources=sources,
+            used_deep_research=False,
+            processing_time=time.time() - start,
+            scenario=scenario,
+        )
+
+    # Fallback path (scenario_batch_rag.py not present): strict-JSON classification.
     raw = _complete(_structured_messages(question, context_block))
     parsed = _parse_structured(raw) or {
         "analysis": raw.strip(),
@@ -272,13 +382,22 @@ def chat(req: ChatRequest) -> ChatResponse:
         "obligations": [],
         "articles": [],
     }
-
     return ChatResponse(
         analysis=parsed["analysis"],
         risk_level=parsed["risk_level"],
         obligations=parsed["obligations"],
         articles=parsed["articles"],
-        sources=_sources_from_metas(metas, scores),
-        used_deep_research=used_deep_research,
+        sources=sources,
+        used_deep_research=False,
         processing_time=time.time() - start,
+        scenario=Scenario(
+            role=scenario_fields.get("role", "Unknown") or "Unknown",
+            intended_use=scenario_fields.get("intended_use", ""),
+            system_type=scenario_fields.get("system_type", ""),
+            input_data=scenario_fields.get("input_data", ""),
+            domain=scenario_fields.get("domain", ""),
+            related_articles=parsed["articles"],
+            obligations=parsed["obligations"],
+            risk_level=parsed["risk_level"],
+        ),
     )
