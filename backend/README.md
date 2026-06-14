@@ -129,9 +129,42 @@ still works offline.
 
 The server first asks the LLM to extract the scenario fields from the user's
 message (and any attached document), builds the retrieval query with
-`build_scenario_query`, runs retrieval + analysis, then extracts obligations /
-articles and calibrates the risk level — mirroring `scenario_batch_rag.py`.
+`build_scenario_query`, then runs retrieval + a **structured-JSON
+classification** prompt (the proven `batch_rag.py` technique). It parses the
+risk level / obligations / articles directly, falls back to the
+`scenario_batch_rag.py` regex extractors if the model omits a field, and
+calibrates the risk level with `calibrate_risk_level`.
+
+Two reliability tweaks for the chat setting (vs. the batch benchmark, which is
+fed rich, hand-authored scenario fields):
+
+- the **raw user description is included** alongside the extracted fields when
+  classifying, so terse extraction can't hide legally-critical mechanism
+  details (e.g. "embeds low-frequency tones");
+- a **model-asserted `prohibited` is never downgraded** by calibration — its
+  metadata inference can wrongly override a correct prohibited call when the
+  chat-extracted fields are sparse.
 
 Uploaded documents: the frontend sends the plain text of attached files as
 `document_text`; the server adds it as an extra citeable source
 (`user-upload`) so the model can classify the user's own scenario.
+
+## 5. Evaluate classification accuracy
+
+`eval_bench.py` scores the classifier against a benchmark file (e.g. the
+project's `scenarios.json`, an array under a `data` key with `risk_level`
+labels). It caches the embedding/reranker models so a run isn't bottlenecked by
+reloading them every scenario.
+
+```bash
+# the live server technique (what /chat uses)
+python eval_bench.py scenarios.json --method server --per-class 15
+
+# the original proven batch_rag.py technique (needs batch_rag.py present)
+python eval_bench.py scenarios.json --method batch --limit 40
+```
+
+`--per-class N` takes N scenarios from each risk tier for a class-balanced
+sample; omit it to run the whole file. Methods: `server` (current), `batch`
+(reference), `old` (previous free-form prompt), `live` (full path incl. field
+extraction), `v2` (prompt-only ablation).

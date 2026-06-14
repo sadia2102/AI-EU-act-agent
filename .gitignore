@@ -50,6 +50,8 @@ backend/chroma_db/
 backend/text_chunks.tsv
 backend/text_chunks.txt
 backend/_ingest_tsv.py
+# benchmark dataset (the user's own data, used by eval_bench.py)
+backend/scenarios.json
 # user's own pipeline files live next to server.py but are not part of this repo
 backend/rag_chat.py
 backend/batch_rag.py
