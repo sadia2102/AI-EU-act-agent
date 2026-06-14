@@ -65,12 +65,16 @@ export function ChatApp() {
     attachments: Attachment[],
     documentText?: string,
   ) {
+    const history = messages.map((m) => ({
+      role: m.role,
+      content: m.content,
+    }));
     setMessages((prev) => [...prev, createUserMessage(text, attachments)]);
     setIsTyping(true);
 
     if (isApiConfigured()) {
       try {
-        const reply = await fetchAgentReply(text, documentText);
+        const reply = await fetchAgentReply(text, documentText, history);
         setMessages((prev) => [
           ...prev,
           createAssistantMessage(reply.content, reply.classification),

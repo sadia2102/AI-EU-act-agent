@@ -83,10 +83,17 @@ app.add_middleware(
 )
 
 
+class Turn(BaseModel):
+    role: str
+    content: str
+
+
 class ChatRequest(BaseModel):
     message: str
     # Plain-text contents of any documents the user attached in the UI.
     document_text: Optional[str] = None
+    # Prior conversation turns (oldest first), so follow-ups have context.
+    history: List[Turn] = []
     fast: bool = False
 
 
@@ -196,9 +203,28 @@ def _parse_structured(text: str) -> Optional[Dict[str, Any]]:
     }
 
 
-def _extract_scenario_fields(message: str, document_text: Optional[str]) -> Dict[str, str]:
+def _history_text(history: List["Turn"], limit: int = 6) -> str:
+    """Render the recent conversation turns as plain text for context."""
+    if not history:
+        return ""
+    lines: List[str] = []
+    for turn in history[-limit:]:
+        who = "User" if turn.role == "user" else "Assistant"
+        content = (turn.content or "").strip()
+        if content:
+            lines.append(f"{who}: {content}")
+    return "\n".join(lines)
+
+
+def _extract_scenario_fields(
+    message: str, document_text: Optional[str], history: Optional[List["Turn"]] = None
+) -> Dict[str, str]:
     """Use the LLM to turn the user's free-text message into scenario fields."""
-    blob = message.strip()
+    blob = ""
+    convo = _history_text(history or [])
+    if convo:
+        blob += "Conversation so far:\n" + convo + "\n\nLatest message:\n"
+    blob += message.strip()
     if document_text and document_text.strip():
         blob += "\n\nAttached document:\n" + document_text.strip()[:6000]
 
@@ -349,39 +375,54 @@ def _articles_from_text(text: str) -> List[int]:
     return sorted(nums)
 
 
-def _route_intent(message: str, document_text: Optional[str]) -> Dict[str, Any]:
+def _route_intent(
+    message: str, document_text: Optional[str], history: Optional[List["Turn"]] = None
+) -> Dict[str, Any]:
     """Decide how to handle the message: a scenario to classify, a general
-    question to answer, or a vague scenario that needs a clarifying question."""
-    blob = message.strip()
+    question to answer, or a vague scenario that needs a clarifying question.
+    Uses the conversation so far so follow-ups resolve against earlier turns."""
+    blob = ""
+    convo = _history_text(history or [])
+    if convo:
+        blob += "Conversation so far:\n" + convo + "\n\nLatest message:\n"
+    blob += message.strip()
     if document_text and document_text.strip():
         blob += "\n\n[The user also attached a document for context.]"
 
     system = (
-        "You triage messages for an EU AI Act assistant. Decide how to handle the "
-        "user's message and return ONLY a JSON object with keys: "
-        '"intent" ("scenario" or "question"), "sufficient" (boolean), '
+        "You triage messages for an EU AI Act assistant. Use the conversation so "
+        "far to resolve references in the latest message. Return ONLY a JSON object "
+        'with keys: "intent" ("scenario" or "question"), "sufficient" (boolean), '
         'and "clarifying_question" (string).\n'
-        "- intent='scenario': the user describes a specific AI system or use-case "
-        "and wants its EU AI Act risk level / obligations.\n"
-        "- intent='question': a general informational or legal question about the "
-        "AI Act (scope, definitions, what an article says, whether it applies to X).\n"
-        "- sufficient: default to TRUE. Set sufficient=false ONLY when the message "
-        "gives essentially no indication of what the AI system DOES or its PURPOSE, "
-        "so a risk level cannot be guessed at all. If the message names a concrete "
-        "function or use (e.g. screening job applicants, ranking CVs, audio nudging "
-        "of shoppers, facial recognition, a customer chatbot), it IS sufficient \u2014 "
-        "classify it even if minor fields (inputs, exact role) are missing. Do NOT "
-        "ask for extra detail just to be thorough.\n"
+        "- intent='scenario': the latest message (together with the conversation) "
+        "describes a SPECIFIC AI system, product, or use-case and the user wants to "
+        "know whether it is allowed, its risk level, or its obligations \u2014 EVEN "
+        "when phrased as a yes/no question like 'would it be okay?', 'is this "
+        "allowed?', 'is this compliant?', or 'what is the risk category here?'.\n"
+        "- intent='question': an ABSTRACT or definitional question about the AI Act "
+        "that does NOT describe a specific system to evaluate (e.g. 'what is a "
+        "high-risk system?', 'what are the penalties?', 'does the Act apply to "
+        "military uses?', 'what does Article 5 say?').\n"
+        "- sufficient: default to TRUE. Set sufficient=false ONLY when intent is "
+        "scenario but neither the message NOR the conversation indicates what the "
+        "system DOES or its PURPOSE, so a risk level cannot be guessed at all. If a "
+        "concrete function/use is present anywhere in the conversation, it IS "
+        "sufficient \u2014 classify it even if minor fields are missing. Do NOT ask "
+        "for extra detail just to be thorough.\n"
         "- When sufficient=false, put ONE short, specific follow-up in clarifying_question.\n"
         "- For intent='question', always set sufficient=true and clarifying_question=\"\".\n"
         "Examples:\n"
-        '"I built an AI system. What risk level is it?" -> '
-        '{"intent":"scenario","sufficient":false,"clarifying_question":"What does the system do, and what is its intended purpose?"}\n'
+        '"If the provider offers a background music AI that embeds low-frequency tones to increase impulse buying in supermarkets, would it be okay?" -> '
+        '{"intent":"scenario","sufficient":true,"clarifying_question":""}\n'
         '"We screen job applicants with an AI CV-ranking tool." -> '
         '{"intent":"scenario","sufficient":true,"clarifying_question":""}\n'
-        '"As a provider we deploy a hidden-audio platform that nudges shoppers to buy products without their awareness." -> '
+        '(after a scenario was described) "What is the risk category here?" -> '
         '{"intent":"scenario","sufficient":true,"clarifying_question":""}\n'
+        '"I built an AI system. What risk level is it?" -> '
+        '{"intent":"scenario","sufficient":false,"clarifying_question":"What does the system do, and what is its intended purpose?"}\n'
         '"Does the AI Act apply to military systems?" -> '
+        '{"intent":"question","sufficient":true,"clarifying_question":""}\n'
+        '"What are the penalties for non-compliance?" -> '
         '{"intent":"question","sufficient":true,"clarifying_question":""}'
     )
     messages = [{"role": "system", "content": system}, {"role": "user", "content": blob}]
@@ -423,7 +464,7 @@ def chat(req: ChatRequest) -> ChatResponse:
     start = time.time()
     question = req.message.strip()
 
-    route = _route_intent(question, req.document_text)
+    route = _route_intent(question, req.document_text, req.history)
 
     # The scenario is too vague to classify: ask the user for the missing detail
     # instead of guessing a risk level.
@@ -451,7 +492,13 @@ def chat(req: ChatRequest) -> ChatResponse:
             )
         context_block = build_context(docs, metas)
         sources = _sources_from_metas(metas, scores)
-        analysis = _complete(build_messages(question, context_block)).strip()
+        convo = _history_text(req.history)
+        qa_question = (
+            f"Conversation so far:\n{convo}\n\nLatest question: {question}"
+            if convo
+            else question
+        )
+        analysis = _complete(build_messages(qa_question, context_block)).strip()
         return ChatResponse(
             analysis=analysis,
             risk_level="unknown",
@@ -467,7 +514,7 @@ def chat(req: ChatRequest) -> ChatResponse:
     # Otherwise: a scenario with enough detail -> full risk classification.
     # Build the scenario (role/intended_use/...) and the retrieval query. When the
     # project's scenario_batch_rag.py is available we use its exact query builder.
-    scenario_fields = _extract_scenario_fields(question, req.document_text)
+    scenario_fields = _extract_scenario_fields(question, req.document_text, req.history)
     if SCENARIO_AVAILABLE:
         query = build_scenario_query(scenario_fields)
     else:

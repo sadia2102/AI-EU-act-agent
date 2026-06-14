@@ -28,9 +28,15 @@ export interface AgentReply {
   classification?: Classification;
 }
 
+export interface HistoryTurn {
+  role: "user" | "assistant";
+  content: string;
+}
+
 export async function fetchAgentReply(
   message: string,
   documentText?: string,
+  history: HistoryTurn[] = [],
 ): Promise<AgentReply> {
   if (!API_URL) {
     throw new Error("NEXT_PUBLIC_API_URL is not set");
@@ -42,6 +48,7 @@ export async function fetchAgentReply(
     body: JSON.stringify({
       message,
       document_text: documentText ?? null,
+      history,
     }),
   });
 
