@@ -1,0 +1,52 @@
+% Multi-model comparison tables for LaTeX
+% Copy the relevant table(s) into your main .tex file.
+% Requires: \usepackage{booktabs}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Aggregate performance of the four LLMs on 339 EU AI Act scenarios.}
+  \label{tab:multi-model-aggregate}
+  {\small\setlength{\tabcolsep}{2pt}
+  \begin{tabular}{@{}l c c c c c@{}}
+    \toprule
+    \textbf{Model} & \textbf{Evaluated} & \textbf{Risk Acc.} & \textbf{Article F1} & \textbf{Obl. Cov.} & \textbf{Avg. Time (s)} \\
+    \midrule
+    GPT-5.4-mini & 339/339 (100\%) & 83.19\% & 0.247 & 83.37\% & 151.0 \\
+    Llama 3.1-70B-Instruct & 339/339 (100\%) & \textbf{83.78\%} & 0.161 & 57.73\% & 141.1 \\
+    Claude Sonnet-5 & 339/339 (100\%) & 83.48\% & \textbf{0.253} & \textbf{74.10\%} & 284.3 \\
+    Mistral 8B-2512 & 336/339 (99.1\%) & 81.85\% & 0.160 & 34.09\% & 158.7 \\
+    \bottomrule
+  \end{tabular}}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Per-risk-category F1 scores for the four LLMs.}
+  \label{tab:multi-model-f1}
+  \begin{tabular}{@{}l c c c c@{}}
+    \toprule
+    \textbf{Model} & \textbf{Prohibited} & \textbf{High-Risk} & \textbf{Limited-Risk} & \textbf{Minimal-Risk} \\
+    \midrule
+    GPT-5.4-mini & 0.750 & 0.862 & 0.777 & 0.900 \\
+    Llama 3.1-70B-Instruct & 0.773 & 0.857 & \textbf{0.797} & 0.892 \\
+    Claude Sonnet-5 & 0.759 & 0.862 & 0.782 & \textbf{0.900} \\
+    Mistral 8B-2512 & 0.736 & 0.826 & 0.776 & 0.900 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Risk classification accuracy and average processing time per model.}
+  \label{tab:multi-model-accuracy-time}
+  \begin{tabular}{@{}l c c@{}}
+    \toprule
+    \textbf{Model} & \textbf{Risk Accuracy (\%)} & \textbf{Avg. Processing Time (s)} \\
+    \midrule
+    GPT-5.4-mini & 83.19 & 151.0 \\
+    Llama 3.1-70B-Instruct & 83.78 & 141.1 \\
+    Claude Sonnet-5 & 83.48 & 284.3 \\
+    Mistral 8B-2512 & 81.85 & 158.7 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

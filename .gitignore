@@ -47,13 +47,23 @@ backend/__pycache__/
 backend/*.pyc
 # local data / index (rebuilt from the user's corpus, not part of this repo)
 backend/chroma_db/
-backend/text_chunks.tsv
 backend/text_chunks.txt
 backend/_ingest_tsv.py
-# benchmark dataset (the user's own data, used by eval_bench.py)
-backend/scenarios.json
-# user's own pipeline files live next to server.py but are not part of this repo
-backend/rag_chat.py
-backend/batch_rag.py
-backend/scenario_batch_rag.py
-backend/openai_deep_research.py
+
+# thesis report folder and documents (not for git)
+report/
+*.pdf
+*.docx
+
+# generated chroma db in repo root
+chroma/
+
+# generated LaTeX/build artifacts
+*.aux
+*.log
+*.out
+
+# python cache globally
+__pycache__/
+*.pyc
+.venv/

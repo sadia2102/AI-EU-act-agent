@@ -78,3 +78,7 @@ scenario.
 - `npm run dev` – start the dev server
 - `npm run build` – production build
 - `npm run lint` – ESLint
+
+## Thesis evaluation
+
+The `thesis/` directory contains the final multi-model comparison report and LaTeX/Word tables. The evaluation scripts, benchmark data, and model outputs are in `backend/`. See [`thesis/README.md`](./thesis/README.md) for reproduction steps.
