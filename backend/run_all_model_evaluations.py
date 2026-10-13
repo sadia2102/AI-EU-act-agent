@@ -33,13 +33,14 @@ for model, result_file in MODELS.items():
     try:
         with open(eval_file, "r", encoding="utf-8") as f:
             eval_data = json.load(f)
-        overall = eval_data.get("overall_metrics", {})
+        overall = eval_data.get("aggregate_scores", {}).get("risk_classification", {})
+        accuracy = overall.get("accuracy")
         SUMMARY.append({
             "model": model,
             "result_file": result_file,
             "eval_file": eval_file,
             "report_file": report_file,
-            "risk_level_accuracy": overall.get("risk_level_accuracy"),
+            "risk_level_accuracy": accuracy,
         })
     except Exception as e:
         print(f"Could not parse summary for {model}: {e}")
