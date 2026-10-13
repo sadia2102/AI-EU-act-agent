@@ -6,7 +6,7 @@ All four models were run over the full benchmark set of 339 scenarios. Evaluatio
 
 | Model | Evaluated | Risk Accuracy | Article F1 | Obligation Coverage | Avg. Processing Time |
 |-------|-----------|--------------:|-----------:|--------------------:|---------------------:|
-| GPT-5.4-mini | 339/339 (100%) | 83.19% | 0.247 | 83.37% | 151.0 s |
+| GPT-5.4-mini | 339/339 (100%) | 83.48% | 0.247 | 83.23% | 151.0 s |
 | Llama 3.1-70B-Instruct | 339/339 (100%) | **83.78%** | 0.161 | 57.73% | 141.1 s |
 | Claude Sonnet-5 | 339/339 (100%) | 83.48% | **0.253** | **74.10%** | 284.3 s |
 | Mistral 8B-2512 | 336/339 (99.1%) | 81.85% | 0.160 | 34.09% | 158.7 s |
@@ -15,7 +15,7 @@ All four models were run over the full benchmark set of 339 scenarios. Evaluatio
 
 | Model | Prohibited | High-Risk | Limited-Risk | Minimal-Risk |
 |-------|-----------:|----------:|-------------:|-------------:|
-| GPT-5.4-mini | 0.750 | 0.862 | 0.777 | 0.900 |
+| GPT-5.4-mini | 0.776  | 0.857 | 0.782 | 0.892 |
 | Llama 3.1-70B-Instruct | 0.773 | 0.857 | **0.797** | 0.892 |
 | Claude Sonnet-5 | 0.759 | 0.862 | 0.782 | **0.900** |
 | Mistral 8B-2512 | 0.736 | 0.826 | 0.776 | 0.900 |

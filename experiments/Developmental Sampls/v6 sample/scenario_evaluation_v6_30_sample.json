@@ -1,0 +1,2265 @@
+{
+  "metadata": {
+    "evaluated_at": "2026-08-05T08:00:18.827770Z",
+    "scenarios_file": "scenarios_30_sample.json",
+    "results_file": "scenarios_output_v6_30_sample.json",
+    "detailed_report": false
+  },
+  "aggregate_scores": {
+    "total_scenarios": 29,
+    "successful_evaluations": 29,
+    "success_rate": 1.0,
+    "error_rate": 0.0,
+    "avg_processing_time": 29.9089575142696,
+    "risk_classification": {
+      "accuracy": 0.9655172413793104,
+      "avg_distance": 0.034482758620689655
+    },
+    "obligations": {
+      "avg_coverage": 0.8807881773399016,
+      "avg_semantic_similarity": 0.30626696719036633
+    },
+    "articles": {
+      "avg_precision": 0.3612889983579639,
+      "avg_recall": 0.3862068965517242,
+      "avg_f1_score": 0.34170897842297443
+    },
+    "citations": {
+      "avg_validity": 1.0
+    }
+  },
+  "individual_evaluations": [
+    {
+      "id": "scenario_1",
+      "role": "Provider",
+      "system_type": "Subconscious influence engine",
+      "domain": "Retail",
+      "has_error": false,
+      "error": null,
+      "processing_time": 32.998610973358154,
+      "risk_evaluation": {
+        "benchmark_risk": "prohibited",
+        "generated_risk": "prohibited",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 10,
+        "generated_count": 4,
+        "coverage_ratio": 0.4,
+        "semantic_similarity": 0.301016974914819,
+        "obligation_matches": [
+          {
+            "benchmark": "Immediately halt any deployment of the audio influence engine that uses subliminal techniques beyond users' consciousness, as this practice is prohibited under Article 5(a).",
+            "generated": "Do not deploy subliminal audio stimuli that influence behaviour without the person being aware of the influence, how it works, or its effects. [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=751]",
+            "similarity": 0.7070146799087524
+          },
+          {
+            "benchmark": "If the system is to be continued, redesign it to eliminate any subliminal or manipulative influence that could materially distort shopper behaviour without informed consent, ensuring compliance with Article 5.",
+            "generated": "Ensure the system is not used in a way that fulfills Article 5(1)(a) conditions for prohibited subliminal manipulation. [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=751]",
+            "similarity": 0.5165572166442871
+          },
+          {
+            "benchmark": "Conduct a comprehensive data‑governance review of all training, validation and testing data (audio streams, browsing history, purchase records, demographic profiles) to verify they meet the quality, bias‑mitigation and special‑category safeguards set out in Article 10.",
+            "generated": "Implement a compliance review to determine whether the retail nudging system uses personal data in a way that creates prohibited manipulation rather than a permissible transparency-only use case. [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=751] [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.3528420925140381
+          },
+          {
+            "benchmark": "Document the data‑management processes, including data origin, preprocessing, bias‑assessment and mitigation measures, and retain these records for inspection as required by Article 10(2‑4).",
+            "generated": "Implement a compliance review to determine whether the retail nudging system uses personal data in a way that creates prohibited manipulation rather than a permissible transparency-only use case. [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=751] [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.4857628345489502
+          },
+          {
+            "benchmark": "Implement a quality‑management system, maintain technical documentation, keep system logs, and perform the appropriate conformity‑assessment procedure before placing the system on the market, in line with Article 16(a‑g).",
+            "generated": "Implement a compliance review to determine whether the retail nudging system uses personal data in a way that creates prohibited manipulation rather than a permissible transparency-only use case. [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=751] [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.32846611738204956
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          5,
+          10,
+          16,
+          27,
+          50
+        ],
+        "generated_articles": [
+          5,
+          50
+        ],
+        "correct_articles": [
+          5,
+          50
+        ],
+        "missed_articles": [
+          10,
+          16,
+          27
+        ],
+        "extra_articles": [],
+        "precision": 1.0,
+        "recall": 0.4,
+        "f1_score": 0.5714285714285715
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_2",
+      "role": "Deployer",
+      "system_type": "Subliminal visual persuasion tool",
+      "domain": "Media",
+      "has_error": false,
+      "error": null,
+      "processing_time": 27.582047939300537,
+      "risk_evaluation": {
+        "benchmark_risk": "prohibited",
+        "generated_risk": "prohibited",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 7,
+        "generated_count": 4,
+        "coverage_ratio": 0.5714285714285714,
+        "semantic_similarity": 0.2553672628211124,
+        "obligation_matches": [
+          {
+            "benchmark": "Immediately cease any placement on the market, putting into service, or use of the visual cue manipulation system, as it constitutes a prohibited AI practice that deploys subliminal techniques to materially distort political behaviour (Article 5(a)).",
+            "generated": "Do not use visual subliminal messages or embedded images that are processed unconsciously but still capable of influencing behaviour. [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=751]",
+            "similarity": 0.616341233253479
+          },
+          {
+            "benchmark": "Remove the system from all operational environments and delete any related data, including logs and personal data, to ensure no further processing occurs.",
+            "generated": "Do not use visual subliminal messages or embedded images that are processed unconsciously but still capable of influencing behaviour. [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=751]",
+            "similarity": 0.15886783599853516
+          },
+          {
+            "benchmark": "Conduct an internal audit to confirm that no prohibited AI practices are being carried out and document the findings for accountability.",
+            "generated": "Do not use visual subliminal messages or embedded images that are processed unconsciously but still capable of influencing behaviour. [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=751]",
+            "similarity": 0.29838305711746216
+          },
+          {
+            "benchmark": "If the system has already been used, notify the relevant national market‑surveillance authority and the national data‑protection authority, providing the required information and ensuring the prompt deletion of all collected data (Article 5, paragraphs 4‑5).",
+            "generated": "Avoid any deployment that relies on covert manipulation of political opinions through news content, click data, location data, or political-affiliation indicators. [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=751]",
+            "similarity": 0.3030877709388733
+          },
+          {
+            "benchmark": "If the organization wishes to develop or deploy any AI tool for political content that is not prohibited, perform a Fundamental Rights Impact Assessment covering the intended use, affected groups, potential harms, and mitigation measures (Article 27).",
+            "generated": "Avoid any deployment that relies on covert manipulation of political opinions through news content, click data, location data, or political-affiliation indicators. [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=751]",
+            "similarity": 0.5430434942245483
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          5,
+          13,
+          26,
+          27,
+          50
+        ],
+        "generated_articles": [
+          5
+        ],
+        "correct_articles": [
+          5
+        ],
+        "missed_articles": [
+          13,
+          26,
+          27,
+          50
+        ],
+        "extra_articles": [],
+        "precision": 1.0,
+        "recall": 0.2,
+        "f1_score": 0.33333333333333337
+      },
+      "citations_evaluation": {
+        "total_citations": 8,
+        "unique_sources": 8,
+        "valid_citations": 8,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_3",
+      "role": "Provider",
+      "system_type": "Medical imaging diagnostic system",
+      "domain": "Healthcare",
+      "has_error": false,
+      "error": null,
+      "processing_time": 29.427927255630493,
+      "risk_evaluation": {
+        "benchmark_risk": "high-risk",
+        "generated_risk": "high-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 10,
+        "generated_count": 5,
+        "coverage_ratio": 0.5,
+        "semantic_similarity": 0.29120329439640047,
+        "obligation_matches": [
+          {
+            "benchmark": "Classify the system as high‑risk under Article 6(1)(a) as it is intended for medical diagnosis purposes.",
+            "generated": "Ensure the system has high levels of robustness, cybersecurity, and accuracy appropriate for healthcare use. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.5136092901229858
+          },
+          {
+            "benchmark": "Conduct a comprehensive conformity assessment by a notified body before placing the system on the market (Article 16).",
+            "generated": "Perform an adequate risk assessment and implement mitigation measures before placing the system on the market. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.3964138925075531
+          },
+          {
+            "benchmark": "Implement a risk management system in accordance with Article 9, including risk identification, evaluation, and mitigation measures.",
+            "generated": "Perform an adequate risk assessment and implement mitigation measures before placing the system on the market. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.47737637162208557
+          },
+          {
+            "benchmark": "Ensure the training, validation and testing data sets meet the quality and governance requirements of Article 10, with particular attention to bias mitigation and data governance.",
+            "generated": "Use high-quality datasets to minimise discriminatory outcomes and support reliable medical diagnosis. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.35603880882263184
+          },
+          {
+            "benchmark": "Maintain technical documentation in accordance with Article 11, including instructions for use, performance data, and conformity assessment results.",
+            "generated": "Maintain logging and technical documentation to ensure traceability and demonstrate compliance. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.4833226799964905
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          6,
+          10,
+          16,
+          27
+        ],
+        "generated_articles": [
+          6,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "correct_articles": [
+          6,
+          10
+        ],
+        "missed_articles": [
+          16,
+          27
+        ],
+        "extra_articles": [
+          9,
+          11,
+          12,
+          13,
+          14
+        ],
+        "precision": 0.2857142857142857,
+        "recall": 0.5,
+        "f1_score": 0.36363636363636365
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_4",
+      "role": "Provider",
+      "system_type": "Customer service conversational AI",
+      "domain": "Retail",
+      "has_error": false,
+      "error": null,
+      "processing_time": 27.405207872390747,
+      "risk_evaluation": {
+        "benchmark_risk": "limited-risk",
+        "generated_risk": "limited-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 3,
+        "generated_count": 4,
+        "coverage_ratio": 1.0,
+        "semantic_similarity": 0.45473003884156543,
+        "obligation_matches": [
+          {
+            "benchmark": "Provide clear information to users that they are interacting with an AI system (Article 50(1)).",
+            "generated": "Inform users clearly that they are interacting with an AI chatbot, so they can make an informed decision. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.6566766500473022
+          },
+          {
+            "benchmark": "Ensure the AI system does not generate or manipulate content in a way that could materially distort user behaviour without informed consent.",
+            "generated": "Inform users clearly that they are interacting with an AI chatbot, so they can make an informed decision. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.6007649898529053
+          },
+          {
+            "benchmark": "Maintain the ability for human oversight upon user request (Article 14).",
+            "generated": "If the system is used in a consumer context, ensure any AI-driven characteristic of the service is not misleadingly hidden from customers. [thesis_text_chunks_v1; Guidelines_on_the_implementation_of_the_transparency_obligations_for_certain_AI_systems_under_Article_50_of_the_AI_Act_lz68oNH813eIDWoquXwCo7eEUc_128275; chunk_index=2415]",
+            "similarity": 0.3104289174079895
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          50
+        ],
+        "generated_articles": [
+          5,
+          50
+        ],
+        "correct_articles": [
+          50
+        ],
+        "missed_articles": [],
+        "extra_articles": [
+          5
+        ],
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1_score": 0.6666666666666666
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_5",
+      "role": "Deployer",
+      "system_type": "Adaptive gaming AI",
+      "domain": "Entertainment",
+      "has_error": false,
+      "error": null,
+      "processing_time": 29.28738498687744,
+      "risk_evaluation": {
+        "benchmark_risk": "minimal-risk",
+        "generated_risk": "minimal-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 3,
+        "generated_count": 4,
+        "coverage_ratio": 1.0,
+        "semantic_similarity": 0.30681780353188515,
+        "obligation_matches": [
+          {
+            "benchmark": "No specific obligations under the AI Act as this is considered minimal‑risk AI.",
+            "generated": "No specific AI Act obligations are introduced for minimal or no risk AI systems such as AI-enabled video games. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.7473790645599365
+          },
+          {
+            "benchmark": "Follow general consumer protection and data protection laws (e.g., GDPR).",
+            "generated": "No transparency disclosure duty is indicated here because the scenario is not a chatbot, deepfake, or AI-generated public-interest text use case. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.23861773312091827
+          },
+          {
+            "benchmark": "Provide transparent information about AI use if relevant.",
+            "generated": "No specific AI Act obligations are introduced for minimal or no risk AI systems such as AI-enabled video games. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.527339518070221
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [],
+        "generated_articles": [],
+        "correct_articles": [],
+        "missed_articles": [],
+        "extra_articles": [],
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      "citations_evaluation": {
+        "total_citations": 11,
+        "unique_sources": 11,
+        "valid_citations": 11,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_6",
+      "role": "Provider",
+      "system_type": "Biometric employment screening system",
+      "domain": "Human Resources",
+      "has_error": false,
+      "error": null,
+      "processing_time": 28.93225407600403,
+      "risk_evaluation": {
+        "benchmark_risk": "high-risk",
+        "generated_risk": "high-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 8,
+        "generated_count": 6,
+        "coverage_ratio": 0.75,
+        "semantic_similarity": 0.24996211395288506,
+        "obligation_matches": [
+          {
+            "benchmark": "Classify as high‑risk under Article 6(1)(b) for employment decisions (Article 6).",
+            "generated": "Perform adequate risk assessment and mitigation before placing the system on the market or putting it into service. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.28878897428512573
+          },
+          {
+            "benchmark": "Obtain prior conformity assessment by a notified body (Article 16).",
+            "generated": "Prepare detailed technical documentation and provide clear instructions for use so authorities and deployers can assess compliance and operate the system correctly. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005] [thesis_text_chunks_v1; Future-of-Life-InstituteAI-Act-overview-30-May-2024; chunk_index=2080]",
+            "similarity": 0.31355807185173035
+          },
+          {
+            "benchmark": "Implement data governance and bias mitigation measures (Article 10).",
+            "generated": "Ensure appropriate levels of robustness, cybersecurity, and accuracy, and establish a quality management system to support ongoing compliance. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005] [thesis_text_chunks_v1; Future-of-Life-InstituteAI-Act-overview-30-May-2024; chunk_index=2080]",
+            "similarity": 0.3755882978439331
+          },
+          {
+            "benchmark": "Maintain technical documentation and provide user instructions (Articles 11, 13).",
+            "generated": "Prepare detailed technical documentation and provide clear instructions for use so authorities and deployers can assess compliance and operate the system correctly. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005] [thesis_text_chunks_v1; Future-of-Life-InstituteAI-Act-overview-30-May-2024; chunk_index=2080]",
+            "similarity": 0.4438507854938507
+          },
+          {
+            "benchmark": "Register in EU database and affix CE marking (Article 16).",
+            "generated": "Prepare detailed technical documentation and provide clear instructions for use so authorities and deployers can assess compliance and operate the system correctly. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005] [thesis_text_chunks_v1; Future-of-Life-InstituteAI-Act-overview-30-May-2024; chunk_index=2080]",
+            "similarity": 0.34483855962753296
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          6,
+          10,
+          11,
+          14,
+          27
+        ],
+        "generated_articles": [
+          4,
+          14
+        ],
+        "correct_articles": [
+          14
+        ],
+        "missed_articles": [
+          6,
+          10,
+          11,
+          27
+        ],
+        "extra_articles": [
+          4
+        ],
+        "precision": 0.5,
+        "recall": 0.2,
+        "f1_score": 0.28571428571428575
+      },
+      "citations_evaluation": {
+        "total_citations": 9,
+        "unique_sources": 9,
+        "valid_citations": 9,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_7",
+      "role": "Provider",
+      "system_type": "Content generation AI",
+      "domain": "Marketing",
+      "has_error": false,
+      "error": null,
+      "processing_time": 29.844684839248657,
+      "risk_evaluation": {
+        "benchmark_risk": "limited-risk",
+        "generated_risk": "limited-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 3,
+        "generated_count": 5,
+        "coverage_ratio": 1.0,
+        "semantic_similarity": 0.4769229104121526,
+        "obligation_matches": [
+          {
+            "benchmark": "Ensure AI‑generated content is clearly identifiable as such (Article 50(2)).",
+            "generated": "Clearly and visibly label AI-generated content so it is identifiable as AI-generated. [Source (2); thesis_text_chunks_v1; chunk_index=1992]",
+            "similarity": 0.7121937274932861
+          },
+          {
+            "benchmark": "Provide transparency about the use of AI to recipients (Article 50(1)).",
+            "generated": "Provide awareness and training for personnel involved in creating, modifying, or overseeing the AI-generated marketing content, proportionate to their role. [Source (2); thesis_text_chunks_v1; chunk_index=1992]",
+            "similarity": 0.5852313041687012
+          },
+          {
+            "benchmark": "Comply with copyright laws when training the AI.",
+            "generated": "Provide awareness and training for personnel involved in creating, modifying, or overseeing the AI-generated marketing content, proportionate to their role. [Source (2); thesis_text_chunks_v1; chunk_index=1992]",
+            "similarity": 0.5700623393058777
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          50
+        ],
+        "generated_articles": [
+          50
+        ],
+        "correct_articles": [
+          50
+        ],
+        "missed_articles": [],
+        "extra_articles": [],
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_8",
+      "role": "Deployer",
+      "system_type": "Logistics optimization AI",
+      "domain": "Transportation",
+      "has_error": false,
+      "error": null,
+      "processing_time": 27.127367973327637,
+      "risk_evaluation": {
+        "benchmark_risk": "minimal-risk",
+        "generated_risk": "minimal-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 3,
+        "generated_count": 6,
+        "coverage_ratio": 1.0,
+        "semantic_similarity": 0.24508810540040335,
+        "obligation_matches": [
+          {
+            "benchmark": "No specific AI Act obligations as this is minimal‑risk AI.",
+            "generated": "Use the system with appropriate human oversight and do not bypass provider safety guardrails or use it for prohibited practices [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=740].",
+            "similarity": 0.3023279309272766
+          },
+          {
+            "benchmark": "Follow general transportation and data protection regulations.",
+            "generated": "Use the system with appropriate human oversight and do not bypass provider safety guardrails or use it for prohibited practices [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=740].",
+            "similarity": 0.4591490626335144
+          },
+          {
+            "benchmark": "Ensure system reliability and safety standards.",
+            "generated": "Use the system with appropriate human oversight and do not bypass provider safety guardrails or use it for prohibited practices [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=740].",
+            "similarity": 0.43476247787475586
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [],
+        "generated_articles": [
+          5,
+          10,
+          13,
+          14,
+          15,
+          26
+        ],
+        "correct_articles": [],
+        "missed_articles": [],
+        "extra_articles": [
+          5,
+          10,
+          13,
+          14,
+          15,
+          26
+        ],
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      "citations_evaluation": {
+        "total_citations": 11,
+        "unique_sources": 11,
+        "valid_citations": 11,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_9",
+      "role": "Provider",
+      "system_type": "Credit scoring AI",
+      "domain": "Finance",
+      "has_error": false,
+      "error": null,
+      "processing_time": 30.829941034317017,
+      "risk_evaluation": {
+        "benchmark_risk": "high-risk",
+        "generated_risk": "high-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 8,
+        "generated_count": 6,
+        "coverage_ratio": 0.75,
+        "semantic_similarity": 0.2684947104814152,
+        "obligation_matches": [
+          {
+            "benchmark": "Classify as high‑risk under Article 6(1)(b) for credit scoring decisions (Article 6).",
+            "generated": "Use high-quality datasets to minimise discriminatory outcomes in credit decisions. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.5909152626991272
+          },
+          {
+            "benchmark": "Obtain conformity assessment by a notified body (Article 16).",
+            "generated": "Provide detailed documentation on the system and its purpose so authorities can assess compliance. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.4087333083152771
+          },
+          {
+            "benchmark": "Implement robust data governance and bias mitigation (Article 10).",
+            "generated": "Provide detailed documentation on the system and its purpose so authorities can assess compliance. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.3696628212928772
+          },
+          {
+            "benchmark": "Maintain technical documentation and provide user instructions (Articles 11, 13).",
+            "generated": "Give the deployer clear and adequate information, and implement appropriate human oversight, robustness, cybersecurity, and accuracy measures. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.4101625382900238
+          },
+          {
+            "benchmark": "Register in EU database and affix CE marking (Article 16).",
+            "generated": "Provide detailed documentation on the system and its purpose so authorities can assess compliance. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.3382568359375
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          6,
+          10,
+          11,
+          14,
+          27
+        ],
+        "generated_articles": [
+          5,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "correct_articles": [
+          10,
+          11,
+          14
+        ],
+        "missed_articles": [
+          6,
+          27
+        ],
+        "extra_articles": [
+          5,
+          12,
+          13,
+          15
+        ],
+        "precision": 0.42857142857142855,
+        "recall": 0.6,
+        "f1_score": 0.5
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_10",
+      "role": "Deployer",
+      "system_type": "Public space surveillance AI",
+      "domain": "Public Safety",
+      "has_error": false,
+      "error": null,
+      "processing_time": 30.189295768737793,
+      "risk_evaluation": {
+        "benchmark_risk": "high-risk",
+        "generated_risk": "high-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 7,
+        "generated_count": 6,
+        "coverage_ratio": 0.8571428571428571,
+        "semantic_similarity": 0.27356741089551223,
+        "obligation_matches": [
+          {
+            "benchmark": "Classify as high‑risk under Article 6(1)(c) for law enforcement purposes (Article 6).",
+            "generated": "Ensure a high level of robustness, cybersecurity, and accuracy, and maintain post-market monitoring and incident reporting where applicable. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.3328086733818054
+          },
+          {
+            "benchmark": "Ensure proper conformity assessment and notification (Article 16).",
+            "generated": "Prepare detailed technical documentation describing the system and its purpose so authorities can assess compliance. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.44591227173805237
+          },
+          {
+            "benchmark": "Implement data protection and privacy safeguards (Article 10).",
+            "generated": "Ensure a high level of robustness, cybersecurity, and accuracy, and maintain post-market monitoring and incident reporting where applicable. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.43262621760368347
+          },
+          {
+            "benchmark": "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "generated": "Prepare detailed technical documentation describing the system and its purpose so authorities can assess compliance. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.5189917683601379
+          },
+          {
+            "benchmark": "Register in EU database and ensure human oversight (Article 14, 16).",
+            "generated": "Ensure a high level of robustness, cybersecurity, and accuracy, and maintain post-market monitoring and incident reporting where applicable. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.36793553829193115
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          6,
+          10,
+          11,
+          14,
+          27
+        ],
+        "generated_articles": [
+          6,
+          27,
+          50,
+          75,
+          113
+        ],
+        "correct_articles": [
+          6,
+          27
+        ],
+        "missed_articles": [
+          10,
+          11,
+          14
+        ],
+        "extra_articles": [
+          50,
+          75,
+          113
+        ],
+        "precision": 0.4,
+        "recall": 0.4,
+        "f1_score": 0.4000000000000001
+      },
+      "citations_evaluation": {
+        "total_citations": 11,
+        "unique_sources": 11,
+        "valid_citations": 11,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_11",
+      "role": "Provider",
+      "system_type": "Social media content generator",
+      "domain": "Social Media",
+      "has_error": false,
+      "error": null,
+      "processing_time": 32.480727672576904,
+      "risk_evaluation": {
+        "benchmark_risk": "limited-risk",
+        "generated_risk": "limited-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 3,
+        "generated_count": 5,
+        "coverage_ratio": 1.0,
+        "semantic_similarity": 0.5003387361764908,
+        "obligation_matches": [
+          {
+            "benchmark": "Ensure AI‑generated content is clearly identifiable (Article 50(2)).",
+            "generated": "Provide a clear and distinguishable disclosure of the AI origin for generated text content [Source (1); Guidelines_on_the_implementation_of_the_transparency_obligations_for_certain_AI_systems_under_Article_50_of_the_AI_Act_lz68oNH813eIDWoquXwCo7eEUc_128275; chunk_index=2442].",
+            "similarity": 0.7660424709320068
+          },
+          {
+            "benchmark": "Provide transparency about AI use to followers (Article 50(1)).",
+            "generated": "Provide a clear and distinguishable disclosure of the AI origin for generated text content [Source (1); Guidelines_on_the_implementation_of_the_transparency_obligations_for_certain_AI_systems_under_Article_50_of_the_AI_Act_lz68oNH813eIDWoquXwCo7eEUc_128275; chunk_index=2442].",
+            "similarity": 0.6510056853294373
+          },
+          {
+            "benchmark": "Comply with platform policies and content regulations.",
+            "generated": "Prepare to comply with the transparency rules applicable to AI-generated content from August 2026 [Source (2); Second_version_of_draft_Code_of_Practicefor_publication_6yjpL0LWkodP0yfBPIHnXYKoc_125388; chunk_index=1956].",
+            "similarity": 0.32412827014923096
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          50
+        ],
+        "generated_articles": [
+          50
+        ],
+        "correct_articles": [
+          50
+        ],
+        "missed_articles": [],
+        "extra_articles": [],
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_12",
+      "role": "Deployer",
+      "system_type": "Email spam filter",
+      "domain": "Communication",
+      "has_error": false,
+      "error": null,
+      "processing_time": 29.50721001625061,
+      "risk_evaluation": {
+        "benchmark_risk": "minimal-risk",
+        "generated_risk": "minimal-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 3,
+        "generated_count": 4,
+        "coverage_ratio": 1.0,
+        "semantic_similarity": 0.29836131694416207,
+        "obligation_matches": [
+          {
+            "benchmark": "No specific AI Act obligations as this is minimal‑risk AI.",
+            "generated": "No specific AI Act obligations are introduced for this minimal-risk spam filter under the provided context. [thesis_text_chunks_v1; AI risk Level; chunk_index=1006]",
+            "similarity": 0.5926679372787476
+          },
+          {
+            "benchmark": "Follow email regulations and data protection laws.",
+            "generated": "No specific AI Act obligations are introduced for this minimal-risk spam filter under the provided context. [thesis_text_chunks_v1; AI risk Level; chunk_index=1006]",
+            "similarity": 0.2967381179332733
+          },
+          {
+            "benchmark": "Ensure system accuracy and false positive management.",
+            "generated": "Treat the system as a standard spam-filtering application rather than a high-risk or transparency-triggering AI use case. [thesis_text_chunks_v1; AI risk Level; chunk_index=1006]",
+            "similarity": 0.2689134180545807
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [],
+        "generated_articles": [
+          2,
+          5,
+          50
+        ],
+        "correct_articles": [],
+        "missed_articles": [],
+        "extra_articles": [
+          2,
+          5,
+          50
+        ],
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_13",
+      "role": "Provider",
+      "system_type": "Educational assessment AI",
+      "domain": "Education",
+      "has_error": false,
+      "error": null,
+      "processing_time": 31.214141130447388,
+      "risk_evaluation": {
+        "benchmark_risk": "high-risk",
+        "generated_risk": "high-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 7,
+        "generated_count": 6,
+        "coverage_ratio": 0.8571428571428571,
+        "semantic_similarity": 0.24314987916676772,
+        "obligation_matches": [
+          {
+            "benchmark": "Classify as high‑risk under Article 6(1)(b) for educational assessment (Article 6).",
+            "generated": "Perform risk assessment and mitigation for the education assessment system before placing it on the market or putting it into service. [Source (2); OJ_L_202401689_EN_TXT; chunk_index=1262]",
+            "similarity": 0.5476315021514893
+          },
+          {
+            "benchmark": "Obtain conformity assessment by a notified body (Article 16).",
+            "generated": "Implement logging and traceability measures so grading decisions and system outputs can be audited. [Source (2); OJ_L_202401689_EN_TXT; chunk_index=1262]",
+            "similarity": 0.28468573093414307
+          },
+          {
+            "benchmark": "Implement fair assessment and bias mitigation (Article 10).",
+            "generated": "Use high-quality datasets and controls to minimise discriminatory outcomes in student assessment and grading. [Source (2); OJ_L_202401689_EN_TXT; chunk_index=1262]",
+            "similarity": 0.5097033977508545
+          },
+          {
+            "benchmark": "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "generated": "Provide detailed, meaningful, comprehensive, accessible and understandable documentation and instructions for use to deployers. [Source (2); OJ_L_202401689_EN_TXT; chunk_index=1262]",
+            "similarity": 0.5212926864624023
+          },
+          {
+            "benchmark": "Register in EU database and ensure human oversight (Article 14, 16).",
+            "generated": "Design the system with human oversight measures, including mechanisms that allow a human operator to intervene, stop the system, and ensure competent oversight. [Source (3); OJ%3AL_202401689%3AEN%3ATXT; chunk_index=2142]",
+            "similarity": 0.39752253890037537
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          6,
+          10,
+          11,
+          14,
+          27
+        ],
+        "generated_articles": [
+          3,
+          27
+        ],
+        "correct_articles": [
+          27
+        ],
+        "missed_articles": [
+          6,
+          10,
+          11,
+          14
+        ],
+        "extra_articles": [
+          3
+        ],
+        "precision": 0.5,
+        "recall": 0.2,
+        "f1_score": 0.28571428571428575
+      },
+      "citations_evaluation": {
+        "total_citations": 11,
+        "unique_sources": 11,
+        "valid_citations": 11,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_14",
+      "role": "Provider",
+      "system_type": "E-commerce recommendation engine",
+      "domain": "Retail",
+      "has_error": false,
+      "error": null,
+      "processing_time": 32.25672769546509,
+      "risk_evaluation": {
+        "benchmark_risk": "limited-risk",
+        "generated_risk": "limited-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 3,
+        "generated_count": 4,
+        "coverage_ratio": 1.0,
+        "semantic_similarity": 0.3406483226766189,
+        "obligation_matches": [
+          {
+            "benchmark": "Provide transparency about AI use in recommendations (Article 50(1)).",
+            "generated": "No specific AI Act obligations are identified in the provided context for a simple recommender system that is not a prohibited, high-risk, or transparency-triggering use case. [Source (2); cb6d9eca-en; chunk_index=1582]",
+            "similarity": 0.6828280687332153
+          },
+          {
+            "benchmark": "Ensure recommendations do not manipulate users (Article 5).",
+            "generated": "No specific AI Act obligations are identified in the provided context for a simple recommender system that is not a prohibited, high-risk, or transparency-triggering use case. [Source (2); cb6d9eca-en; chunk_index=1582]",
+            "similarity": 0.4191237986087799
+          },
+          {
+            "benchmark": "Comply with consumer protection and data protection laws.",
+            "generated": "Do not use the system for any prohibited practice such as harmful manipulation, exploitation of vulnerabilities, or social scoring. [Source (1); C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=754]",
+            "similarity": 0.29130035638809204
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          50
+        ],
+        "generated_articles": [
+          5,
+          50
+        ],
+        "correct_articles": [
+          50
+        ],
+        "missed_articles": [],
+        "extra_articles": [
+          5
+        ],
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1_score": 0.6666666666666666
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_15",
+      "role": "Deployer",
+      "system_type": "Inventory optimization AI",
+      "domain": "Logistics",
+      "has_error": false,
+      "error": null,
+      "processing_time": 30.002942085266113,
+      "risk_evaluation": {
+        "benchmark_risk": "minimal-risk",
+        "generated_risk": "minimal-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 3,
+        "generated_count": 5,
+        "coverage_ratio": 1.0,
+        "semantic_similarity": 0.33002931674321495,
+        "obligation_matches": [
+          {
+            "benchmark": "No specific AI Act obligations as this is minimal‑risk AI.",
+            "generated": "Do not use the AI system in any manner prohibited under Article 5, and do not bypass provider safety guardrails. [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=740]",
+            "similarity": 0.5598892569541931
+          },
+          {
+            "benchmark": "Follow business and data protection regulations.",
+            "generated": "If the system is later determined to be high-risk, provide clear and adequate information to the deployer and implement appropriate human oversight, robustness, cybersecurity, and accuracy measures. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.4145519733428955
+          },
+          {
+            "benchmark": "Ensure system reliability and accuracy.",
+            "generated": "If the system is later determined to be high-risk, provide clear and adequate information to the deployer and implement appropriate human oversight, robustness, cybersecurity, and accuracy measures. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.5129133462905884
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [],
+        "generated_articles": [
+          5,
+          6,
+          10,
+          12,
+          13,
+          14
+        ],
+        "correct_articles": [],
+        "missed_articles": [],
+        "extra_articles": [
+          5,
+          6,
+          10,
+          12,
+          13,
+          14
+        ],
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_16",
+      "role": "Provider",
+      "system_type": "Legal document analyzer",
+      "domain": "Legal",
+      "has_error": false,
+      "error": null,
+      "processing_time": 29.536595821380615,
+      "risk_evaluation": {
+        "benchmark_risk": "high-risk",
+        "generated_risk": "high-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 7,
+        "generated_count": 6,
+        "coverage_ratio": 0.8571428571428571,
+        "semantic_similarity": 0.28403854999868644,
+        "obligation_matches": [
+          {
+            "benchmark": "Classify as high‑risk under Article 6(1)(b) for legal decision support (Article 6).",
+            "generated": "Prepare detailed technical documentation sufficient for authorities to assess compliance and understand the system’s purpose. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.45109254121780396
+          },
+          {
+            "benchmark": "Obtain conformity assessment by a notified body (Article 16).",
+            "generated": "Prepare detailed technical documentation sufficient for authorities to assess compliance and understand the system’s purpose. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.3857073187828064
+          },
+          {
+            "benchmark": "Ensure accuracy and reliability of legal analysis (Article 10).",
+            "generated": "Use high-quality datasets to minimise discriminatory outcomes in legal analysis and contract review outputs. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.5273287892341614
+          },
+          {
+            "benchmark": "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "generated": "Prepare detailed technical documentation sufficient for authorities to assess compliance and understand the system’s purpose. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.48812806606292725
+          },
+          {
+            "benchmark": "Register in EU database and ensure human oversight (Article 14, 16).",
+            "generated": "Prepare detailed technical documentation sufficient for authorities to assess compliance and understand the system’s purpose. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.3945428729057312
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          6,
+          10,
+          11,
+          14,
+          27
+        ],
+        "generated_articles": [
+          3,
+          16,
+          25
+        ],
+        "correct_articles": [],
+        "missed_articles": [
+          6,
+          10,
+          11,
+          14,
+          27
+        ],
+        "extra_articles": [
+          3,
+          16,
+          25
+        ],
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_17",
+      "role": "Deployer",
+      "system_type": "Financial fraud detection AI",
+      "domain": "Finance",
+      "has_error": false,
+      "error": null,
+      "processing_time": 28.525650024414062,
+      "risk_evaluation": {
+        "benchmark_risk": "high-risk",
+        "generated_risk": "high-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 7,
+        "generated_count": 6,
+        "coverage_ratio": 0.8571428571428571,
+        "semantic_similarity": 0.24003436132555916,
+        "obligation_matches": [
+          {
+            "benchmark": "Classify as high‑risk under Article 6(1)(b) for financial risk assessment (Article 6).",
+            "generated": "Ensure high robustness, cybersecurity, and accuracy, and do not use the system in a prohibited manner under Article 5. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675] [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=740]",
+            "similarity": 0.2560194730758667
+          },
+          {
+            "benchmark": "Ensure proper conformity assessment and notification (Article 16).",
+            "generated": "Maintain detailed technical documentation showing the system’s purpose and compliance for authorities. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.4066515564918518
+          },
+          {
+            "benchmark": "Implement robust fraud detection accuracy (Article 10).",
+            "generated": "Use high-quality datasets and controls to minimise discriminatory outcomes in fraud decisions. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.6352542638778687
+          },
+          {
+            "benchmark": "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "generated": "Maintain detailed technical documentation showing the system’s purpose and compliance for authorities. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.46621009707450867
+          },
+          {
+            "benchmark": "Register in EU database and ensure human oversight (Article 14, 16).",
+            "generated": "Ensure high robustness, cybersecurity, and accuracy, and do not use the system in a prohibited manner under Article 5. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675] [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=740]",
+            "similarity": 0.36221814155578613
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          6,
+          10,
+          11,
+          14,
+          27
+        ],
+        "generated_articles": [
+          5,
+          6,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "correct_articles": [
+          6,
+          10,
+          11,
+          14
+        ],
+        "missed_articles": [
+          27
+        ],
+        "extra_articles": [
+          5,
+          12,
+          13,
+          15
+        ],
+        "precision": 0.5,
+        "recall": 0.8,
+        "f1_score": 0.6153846153846154
+      },
+      "citations_evaluation": {
+        "total_citations": 8,
+        "unique_sources": 8,
+        "valid_citations": 8,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_18",
+      "role": "Provider",
+      "system_type": "Automated news generator",
+      "domain": "Media",
+      "has_error": false,
+      "error": null,
+      "processing_time": 29.077643156051636,
+      "risk_evaluation": {
+        "benchmark_risk": "limited-risk",
+        "generated_risk": "limited-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 4,
+        "generated_count": 5,
+        "coverage_ratio": 1.0,
+        "semantic_similarity": 0.3789002262055874,
+        "obligation_matches": [
+          {
+            "benchmark": "Ensure AI‑generated news is clearly identified (Article 50(2)).",
+            "generated": "Disclose that AI-generated or AI-manipulated news text has been artificially generated or manipulated when it is published to inform the public on matters of public interest. [Source (2); thesis_text_chunks_v1; chunk_index=1983]",
+            "similarity": 0.7084630727767944
+          },
+          {
+            "benchmark": "Provide transparency about AI use to readers (Article 50(1)).",
+            "generated": "Disclose that AI-generated or AI-manipulated news text has been artificially generated or manipulated when it is published to inform the public on matters of public interest. [Source (2); thesis_text_chunks_v1; chunk_index=1983]",
+            "similarity": 0.610136866569519
+          },
+          {
+            "benchmark": "Comply with journalism ethics and media regulations.",
+            "generated": "Check whether the editorial-control exception applies: the disclosure obligation does not apply if the AI-generated content has undergone human review or editorial control and a natural or legal person holds editorial responsibility for publication. [Source (2); thesis_text_chunks_v1; chunk_index=1983]",
+            "similarity": 0.45871078968048096
+          },
+          {
+            "benchmark": "Ensure factual accuracy and avoid misinformation.",
+            "generated": "Disclose that AI-generated or AI-manipulated news text has been artificially generated or manipulated when it is published to inform the public on matters of public interest. [Source (2); thesis_text_chunks_v1; chunk_index=1983]",
+            "similarity": 0.2838476896286011
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          50
+        ],
+        "generated_articles": [
+          50
+        ],
+        "correct_articles": [
+          50
+        ],
+        "missed_articles": [],
+        "extra_articles": [],
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_19",
+      "role": "Deployer",
+      "system_type": "Predictive maintenance AI",
+      "domain": "Manufacturing",
+      "has_error": false,
+      "error": null,
+      "processing_time": 27.65168070793152,
+      "risk_evaluation": {
+        "benchmark_risk": "minimal-risk",
+        "generated_risk": "minimal-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 3,
+        "generated_count": 5,
+        "coverage_ratio": 1.0,
+        "semantic_similarity": 0.31822178363800047,
+        "obligation_matches": [
+          {
+            "benchmark": "No specific AI Act obligations as this is minimal‑risk AI.",
+            "generated": "Do not use the AI system in any manner prohibited under Article 5, and do not bypass provider safety guardrails [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=740].",
+            "similarity": 0.561341404914856
+          },
+          {
+            "benchmark": "Follow industrial safety and data protection regulations.",
+            "generated": "Do not use the AI system in any manner prohibited under Article 5, and do not bypass provider safety guardrails [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=740].",
+            "similarity": 0.4899940490722656
+          },
+          {
+            "benchmark": "Ensure system reliability and maintenance planning.",
+            "generated": "If the system is high-risk, provide clear information to the deployer and enable appropriate human oversight, robustness, cybersecurity, and accuracy [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675].",
+            "similarity": 0.3209015130996704
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [],
+        "generated_articles": [
+          5
+        ],
+        "correct_articles": [],
+        "missed_articles": [],
+        "extra_articles": [
+          5
+        ],
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      "citations_evaluation": {
+        "total_citations": 11,
+        "unique_sources": 11,
+        "valid_citations": 11,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_20",
+      "role": "Provider",
+      "system_type": "Medical device control AI",
+      "domain": "Healthcare",
+      "has_error": false,
+      "error": null,
+      "processing_time": 29.17486000061035,
+      "risk_evaluation": {
+        "benchmark_risk": "high-risk",
+        "generated_risk": "high-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 7,
+        "generated_count": 5,
+        "coverage_ratio": 0.7142857142857143,
+        "semantic_similarity": 0.3206415465899876,
+        "obligation_matches": [
+          {
+            "benchmark": "Classify as high‑risk under Article 6(1)(a) for medical device control (Article 6).",
+            "generated": "Perform risk assessment and mitigation measures appropriate to the high-risk use case, including controls to reduce health and safety risks. [Source (4); node_9745_printable_pdf; chunk_index=676]",
+            "similarity": 0.6422110795974731
+          },
+          {
+            "benchmark": "Obtain conformity assessment by a notified body (Article 16).",
+            "generated": "Prepare detailed technical documentation demonstrating compliance and enabling authorities to assess the system. [Source (5); Future-of-Life-InstituteAI-Act-overview-30-May-2024; chunk_index=2080]",
+            "similarity": 0.43667784333229065
+          },
+          {
+            "benchmark": "Ensure medical device safety and reliability (Article 10).",
+            "generated": "Perform risk assessment and mitigation measures appropriate to the high-risk use case, including controls to reduce health and safety risks. [Source (4); node_9745_printable_pdf; chunk_index=676]",
+            "similarity": 0.5247262716293335
+          },
+          {
+            "benchmark": "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "generated": "Provide clear information to deployers and ensure human oversight, robustness, cybersecurity, and accuracy throughout the lifecycle. [Source (4); node_9745_printable_pdf; chunk_index=676] [Source (1); thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=730]",
+            "similarity": 0.4983695149421692
+          },
+          {
+            "benchmark": "Register in EU database and ensure human oversight (Article 14, 16).",
+            "generated": "Provide clear information to deployers and ensure human oversight, robustness, cybersecurity, and accuracy throughout the lifecycle. [Source (4); node_9745_printable_pdf; chunk_index=676] [Source (1); thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=730]",
+            "similarity": 0.43512749671936035
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          6,
+          10,
+          16,
+          27
+        ],
+        "generated_articles": [
+          6,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "correct_articles": [
+          6,
+          10
+        ],
+        "missed_articles": [
+          16,
+          27
+        ],
+        "extra_articles": [
+          11,
+          12,
+          13,
+          14
+        ],
+        "precision": 0.3333333333333333,
+        "recall": 0.5,
+        "f1_score": 0.4
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 5
+      }
+    },
+    {
+      "id": "scenario_21",
+      "role": "Deployer",
+      "system_type": "Building energy optimizer",
+      "domain": "Energy",
+      "has_error": false,
+      "error": null,
+      "processing_time": 30.627668142318726,
+      "risk_evaluation": {
+        "benchmark_risk": "minimal-risk",
+        "generated_risk": "minimal-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 3,
+        "generated_count": 5,
+        "coverage_ratio": 1.0,
+        "semantic_similarity": 0.3041273007790248,
+        "obligation_matches": [
+          {
+            "benchmark": "No specific AI Act obligations as this is minimal‑risk AI.",
+            "generated": "Maintain documentation or evidence showing how the deployed measures align with the applicable AI Act obligations, including any gap analysis against relevant compliance measures where needed. [thesis_text_chunks_v1; Guidelines_on_the_implementation_of_the_transparency_obligations_for_certain_AI_systems_under_Article_50_of_the_AI_Act_lz68oNH813eIDWoquXwCo7eEUc_128275; chunk_index=2452]",
+            "similarity": 0.6117366552352905
+          },
+          {
+            "benchmark": "Follow energy efficiency and data protection regulations.",
+            "generated": "Do not use the AI system in any manner prohibited under Article 5, and do not bypass any safety guardrails implemented by the provider. [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=740]",
+            "similarity": 0.3135302662849426
+          },
+          {
+            "benchmark": "Ensure system reliability and energy savings.",
+            "generated": "Ensure the system is used responsibly in line with the deployer’s role and control over the AI system in the value chain. [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=740]",
+            "similarity": 0.2227642983198166
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [],
+        "generated_articles": [
+          5,
+          50
+        ],
+        "correct_articles": [],
+        "missed_articles": [],
+        "extra_articles": [
+          5,
+          50
+        ],
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_22",
+      "role": "Provider",
+      "system_type": "Autonomous vehicle AI",
+      "domain": "Transportation",
+      "has_error": false,
+      "error": null,
+      "processing_time": 30.409938097000122,
+      "risk_evaluation": {
+        "benchmark_risk": "high-risk",
+        "generated_risk": "high-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 7,
+        "generated_count": 6,
+        "coverage_ratio": 0.8571428571428571,
+        "semantic_similarity": 0.2386673859187535,
+        "obligation_matches": [
+          {
+            "benchmark": "Classify as high‑risk under Article 6(1)(c) for transportation safety (Article 6).",
+            "generated": "Use high-quality datasets and data governance practices to minimise discriminatory or unsafe outcomes. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.2980332374572754
+          },
+          {
+            "benchmark": "Obtain conformity assessment by a notified body (Article 16).",
+            "generated": "Prepare detailed technical documentation describing the system and its purpose so authorities can assess compliance. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.4027404487133026
+          },
+          {
+            "benchmark": "Ensure vehicle safety and reliability (Article 10).",
+            "generated": "Prepare detailed technical documentation describing the system and its purpose so authorities can assess compliance. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.33161211013793945
+          },
+          {
+            "benchmark": "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "generated": "Prepare detailed technical documentation describing the system and its purpose so authorities can assess compliance. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.5189915299415588
+          },
+          {
+            "benchmark": "Register in EU database and ensure human oversight (Article 14, 16).",
+            "generated": "Ensure high levels of robustness, cybersecurity, and accuracy before market placement or service use. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675] [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=728]",
+            "similarity": 0.3469614088535309
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          6,
+          10,
+          11,
+          14,
+          27
+        ],
+        "generated_articles": [
+          3,
+          6,
+          16,
+          25
+        ],
+        "correct_articles": [
+          6
+        ],
+        "missed_articles": [
+          10,
+          11,
+          14,
+          27
+        ],
+        "extra_articles": [
+          3,
+          16,
+          25
+        ],
+        "precision": 0.25,
+        "recall": 0.2,
+        "f1_score": 0.22222222222222224
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_23",
+      "role": "Deployer",
+      "system_type": "Agricultural yield predictor",
+      "domain": "Agriculture",
+      "has_error": false,
+      "error": null,
+      "processing_time": 31.43795394897461,
+      "risk_evaluation": {
+        "benchmark_risk": "minimal-risk",
+        "generated_risk": "minimal-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 3,
+        "generated_count": 5,
+        "coverage_ratio": 1.0,
+        "semantic_similarity": 0.3334827889998754,
+        "obligation_matches": [
+          {
+            "benchmark": "No specific AI Act obligations as this is minimal‑risk AI.",
+            "generated": "Do not use the AI system in any manner prohibited under Article 5, and do not bypass any safety guardrails implemented by the provider. [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=740]",
+            "similarity": 0.5726731419563293
+          },
+          {
+            "benchmark": "Follow agricultural and environmental regulations.",
+            "generated": "If the system is later determined to fall within a high-risk use case, maintain technical documentation and the information needed for authorities to assess compliance. [thesis_text_chunks_v1; Future-of-Life-InstituteAI-Act-overview-30-May-2024; chunk_index=2079]",
+            "similarity": 0.37463027238845825
+          },
+          {
+            "benchmark": "Ensure prediction accuracy and reliability.",
+            "generated": "If the system is later determined to fall within a high-risk use case, implement a lifecycle risk-management system and use relevant, representative, and sufficiently complete datasets. [thesis_text_chunks_v1; Future-of-Life-InstituteAI-Act-overview-30-May-2024; chunk_index=2079]",
+            "similarity": 0.38191646337509155
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [],
+        "generated_articles": [
+          5,
+          8,
+          10,
+          11,
+          50
+        ],
+        "correct_articles": [],
+        "missed_articles": [],
+        "extra_articles": [
+          5,
+          8,
+          10,
+          11,
+          50
+        ],
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_24",
+      "role": "Provider",
+      "system_type": "Border control AI",
+      "domain": "Border Control",
+      "has_error": false,
+      "error": null,
+      "processing_time": 31.128631114959717,
+      "risk_evaluation": {
+        "benchmark_risk": "high-risk",
+        "generated_risk": "high-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 7,
+        "generated_count": 6,
+        "coverage_ratio": 0.8571428571428571,
+        "semantic_similarity": 0.2806622236967087,
+        "obligation_matches": [
+          {
+            "benchmark": "Classify as high‑risk under Article 6(1)(c) for border control (Article 6).",
+            "generated": "Use high-quality datasets and data governance measures to minimise discriminatory outcomes in border screening decisions. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.5761590003967285
+          },
+          {
+            "benchmark": "Obtain conformity assessment by a notified body (Article 16).",
+            "generated": "Prepare detailed technical documentation describing the system and its purpose so authorities can assess compliance. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.41025930643081665
+          },
+          {
+            "benchmark": "Ensure security and privacy protections (Article 10).",
+            "generated": "Prepare detailed technical documentation describing the system and its purpose so authorities can assess compliance. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.4241510033607483
+          },
+          {
+            "benchmark": "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "generated": "Prepare detailed technical documentation describing the system and its purpose so authorities can assess compliance. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.4849790930747986
+          },
+          {
+            "benchmark": "Register in EU database and ensure human oversight (Article 14, 16).",
+            "generated": "Prepare detailed technical documentation describing the system and its purpose so authorities can assess compliance. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.40704065561294556
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          6,
+          10,
+          11,
+          14,
+          27
+        ],
+        "generated_articles": [
+          6,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "correct_articles": [
+          6,
+          10,
+          11,
+          14
+        ],
+        "missed_articles": [
+          27
+        ],
+        "extra_articles": [
+          9,
+          12,
+          13
+        ],
+        "precision": 0.5714285714285714,
+        "recall": 0.8,
+        "f1_score": 0.6666666666666666
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_25",
+      "role": "Deployer",
+      "system_type": "Educational content recommender",
+      "domain": "Education",
+      "has_error": false,
+      "error": null,
+      "processing_time": 32.530818939208984,
+      "risk_evaluation": {
+        "benchmark_risk": "limited-risk",
+        "generated_risk": "limited-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 3,
+        "generated_count": 6,
+        "coverage_ratio": 1.0,
+        "semantic_similarity": 0.3020154900021023,
+        "obligation_matches": [
+          {
+            "benchmark": "Provide transparency about AI use in recommendations (Article 50(1)).",
+            "generated": "Ensure appropriate human oversight so educators or administrators can review and override recommendations affecting students. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.4590717852115631
+          },
+          {
+            "benchmark": "Ensure recommendations support educational goals (Article 5).",
+            "generated": "Ensure appropriate human oversight so educators or administrators can review and override recommendations affecting students. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.539356529712677
+          },
+          {
+            "benchmark": "Comply with educational regulations and GDPR.",
+            "generated": "Use high-quality datasets and data governance measures to reduce discriminatory or unfair outcomes when processing student performance and engagement data. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.42013660073280334
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          50
+        ],
+        "generated_articles": [
+          3,
+          5,
+          10,
+          14,
+          15,
+          26,
+          27
+        ],
+        "correct_articles": [],
+        "missed_articles": [
+          50
+        ],
+        "extra_articles": [
+          3,
+          5,
+          10,
+          14,
+          15,
+          26,
+          27
+        ],
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 3
+      }
+    },
+    {
+      "id": "scenario_26",
+      "role": "Provider",
+      "system_type": "Insurance risk assessor",
+      "domain": "Insurance",
+      "has_error": false,
+      "error": null,
+      "processing_time": 29.094812870025635,
+      "risk_evaluation": {
+        "benchmark_risk": "high-risk",
+        "generated_risk": "high-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 7,
+        "generated_count": 6,
+        "coverage_ratio": 0.8571428571428571,
+        "semantic_similarity": 0.20966717058659665,
+        "obligation_matches": [
+          {
+            "benchmark": "Classify as high‑risk under Article 6(1)(b) for insurance decisions (Article 6).",
+            "generated": "Use high-quality datasets and controls to minimise discriminatory outcomes in insurance decisions. [Source (1); thesis_text_chunks_v1; chunk_index=675]",
+            "similarity": 0.5809768438339233
+          },
+          {
+            "benchmark": "Obtain conformity assessment by a notified body (Article 16).",
+            "generated": "Report serious incidents and malfunctioning where applicable. [Source (1); thesis_text_chunks_v1; chunk_index=675]",
+            "similarity": 0.2077156901359558
+          },
+          {
+            "benchmark": "Ensure fair risk assessment and bias mitigation (Article 10).",
+            "generated": "Use high-quality datasets and controls to minimise discriminatory outcomes in insurance decisions. [Source (1); thesis_text_chunks_v1; chunk_index=675]",
+            "similarity": 0.5022512078285217
+          },
+          {
+            "benchmark": "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "generated": "Prepare detailed technical documentation and provide clear, adequate information to the deployer, including necessary human oversight instructions. [Source (1); thesis_text_chunks_v1; chunk_index=675]",
+            "similarity": 0.4295649528503418
+          },
+          {
+            "benchmark": "Register in EU database and ensure human oversight (Article 14, 16).",
+            "generated": "Ensure a high level of robustness, cybersecurity, and accuracy, and operate a post-market monitoring system. [Source (1); thesis_text_chunks_v1; chunk_index=675]",
+            "similarity": 0.3440917134284973
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          6,
+          10,
+          11,
+          14,
+          27
+        ],
+        "generated_articles": [
+          5,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          61
+        ],
+        "correct_articles": [
+          10,
+          11,
+          14
+        ],
+        "missed_articles": [
+          6,
+          27
+        ],
+        "extra_articles": [
+          5,
+          12,
+          13,
+          15,
+          61
+        ],
+        "precision": 0.375,
+        "recall": 0.6,
+        "f1_score": 0.4615384615384615
+      },
+      "citations_evaluation": {
+        "total_citations": 8,
+        "unique_sources": 8,
+        "valid_citations": 8,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_27",
+      "role": "Deployer",
+      "system_type": "Traffic optimization AI",
+      "domain": "Urban Planning",
+      "has_error": false,
+      "error": null,
+      "processing_time": 30.431419849395752,
+      "risk_evaluation": {
+        "benchmark_risk": "minimal-risk",
+        "generated_risk": "minimal-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 3,
+        "generated_count": 6,
+        "coverage_ratio": 1.0,
+        "semantic_similarity": 0.19507604050967428,
+        "obligation_matches": [
+          {
+            "benchmark": "No specific AI Act obligations as this is minimal‑risk AI.",
+            "generated": "Ensure a high level of robustness, cybersecurity, and accuracy, and do not use the system in a manner prohibited under Article 5. [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=740] [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.28647521138191223
+          },
+          {
+            "benchmark": "Follow urban planning and data protection regulations.",
+            "generated": "Prepare detailed technical documentation describing the system and its purpose so authorities can assess compliance. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.3279728889465332
+          },
+          {
+            "benchmark": "Ensure system reliability and traffic efficiency.",
+            "generated": "Perform an adequate risk assessment and implement mitigation measures before placing the system on the market or putting it into service. [thesis_text_chunks_v1; node_9745_printable_pdf; chunk_index=675]",
+            "similarity": 0.24977156519889832
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [],
+        "generated_articles": [
+          5,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "correct_articles": [],
+        "missed_articles": [],
+        "extra_articles": [
+          5,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_28",
+      "role": "Provider",
+      "system_type": "Criminal justice risk assessor",
+      "domain": "Criminal Justice",
+      "has_error": false,
+      "error": null,
+      "processing_time": 29.49353790283203,
+      "risk_evaluation": {
+        "benchmark_risk": "high-risk",
+        "generated_risk": "high-risk",
+        "is_correct": true,
+        "is_partial_match": true,
+        "risk_distance": 0
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 7,
+        "generated_count": 6,
+        "coverage_ratio": 0.8571428571428571,
+        "semantic_similarity": 0.2815588464783061,
+        "obligation_matches": [
+          {
+            "benchmark": "Classify as high‑risk under Article 6(1)(c) for law enforcement (Article 6).",
+            "generated": "Do not use the system for individual crime prediction / assessing the likelihood that a person will commit a criminal offence, as that practice is described as prohibited. [thesis_text_chunks_v1; C_2025_884_1_EN_annexe_acte_autonome_cp_part1_v4_4YAkRZf5bMIWOuMqiKMIGySPo_112367; chunk_index=822]",
+            "similarity": 0.43866869807243347
+          },
+          {
+            "benchmark": "Obtain conformity assessment by a notified body (Article 16).",
+            "generated": "Draw up technical documentation to demonstrate compliance and provide authorities with the information needed to assess the system. [thesis_text_chunks_v1; Future-of-Life-InstituteAI-Act-overview-30-May-2024; chunk_index=2079]",
+            "similarity": 0.44487786293029785
+          },
+          {
+            "benchmark": "Ensure fair risk assessment and bias mitigation (Article 10).",
+            "generated": "Establish and maintain a risk management system throughout the AI system’s lifecycle. [thesis_text_chunks_v1; Future-of-Life-InstituteAI-Act-overview-30-May-2024; chunk_index=2079]",
+            "similarity": 0.4197993874549866
+          },
+          {
+            "benchmark": "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "generated": "Draw up technical documentation to demonstrate compliance and provide authorities with the information needed to assess the system. [thesis_text_chunks_v1; Future-of-Life-InstituteAI-Act-overview-30-May-2024; chunk_index=2079]",
+            "similarity": 0.5226212739944458
+          },
+          {
+            "benchmark": "Register in EU database and ensure human oversight (Article 14, 16).",
+            "generated": "Provide clear information and instructions to deployers, and ensure human oversight, robustness, cybersecurity, and accuracy. [thesis_text_chunks_v1; Future-of-Life-InstituteAI-Act-overview-30-May-2024; chunk_index=2079]",
+            "similarity": 0.4260682761669159
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          6,
+          10,
+          11,
+          14,
+          27
+        ],
+        "generated_articles": [
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "correct_articles": [
+          6,
+          10,
+          11,
+          14
+        ],
+        "missed_articles": [
+          27
+        ],
+        "extra_articles": [
+          5,
+          8,
+          9,
+          12,
+          13,
+          15,
+          16,
+          17
+        ],
+        "precision": 0.3333333333333333,
+        "recall": 0.8,
+        "f1_score": 0.47058823529411764
+      },
+      "citations_evaluation": {
+        "total_citations": 7,
+        "unique_sources": 7,
+        "valid_citations": 7,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    },
+    {
+      "id": "scenario_29",
+      "role": "Deployer",
+      "system_type": "Healthcare recommender",
+      "domain": "Healthcare",
+      "has_error": false,
+      "error": null,
+      "processing_time": 29.15208601951599,
+      "risk_evaluation": {
+        "benchmark_risk": "limited-risk",
+        "generated_risk": "high-risk",
+        "is_correct": false,
+        "is_partial_match": false,
+        "risk_distance": 1
+      },
+      "obligations_evaluation": {
+        "benchmark_count": 3,
+        "generated_count": 6,
+        "coverage_ratio": 1.0,
+        "semantic_similarity": 0.3589501364363564,
+        "obligation_matches": [
+          {
+            "benchmark": "Provide transparency about AI use in recommendations (Article 50(1)).",
+            "generated": "Ensure a high level of robustness, cybersecurity, and accuracy for the healthcare recommender. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.5694676637649536
+          },
+          {
+            "benchmark": "Ensure recommendations support medical decisions (Article 5).",
+            "generated": "Ensure a high level of robustness, cybersecurity, and accuracy for the healthcare recommender. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.5621470212936401
+          },
+          {
+            "benchmark": "Comply with medical regulations and GDPR.",
+            "generated": "Ensure a high level of robustness, cybersecurity, and accuracy for the healthcare recommender. [thesis_text_chunks_v1; AI risk Level; chunk_index=1005]",
+            "similarity": 0.4266626238822937
+          }
+        ]
+      },
+      "articles_evaluation": {
+        "benchmark_articles": [
+          50
+        ],
+        "generated_articles": [
+          3,
+          5,
+          6
+        ],
+        "correct_articles": [],
+        "missed_articles": [
+          50
+        ],
+        "extra_articles": [
+          3,
+          5,
+          6
+        ],
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      "citations_evaluation": {
+        "total_citations": 12,
+        "unique_sources": 12,
+        "valid_citations": 12,
+        "citation_validity": 1.0,
+        "context_citations": 4
+      }
+    }
+  ]
+}

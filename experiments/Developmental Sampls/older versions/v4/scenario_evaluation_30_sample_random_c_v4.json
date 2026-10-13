@@ -1,0 +1,286 @@
+{
+  "metadata": {
+    "evaluated_at": "2026-08-04T19:02:04.908189Z",
+    "scenarios_file": "scenarios_30_sample_random_c.json",
+    "results_file": "scenarios_30_sample_random_c_v4.json",
+    "detailed_report": false
+  },
+  "aggregate_scores": {
+    "total_scenarios": 30,
+    "successful_evaluations": 0,
+    "success_rate": 0.0,
+    "error_rate": 1.0
+  },
+  "individual_evaluations": [
+    {
+      "id": "scenario_1",
+      "role": "Deployer",
+      "system_type": "Content generation model",
+      "domain": "Education",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.07698416709899902
+    },
+    {
+      "id": "scenario_2",
+      "role": "Deployer",
+      "system_type": "Image enhancement neural network",
+      "domain": "Consumer Technology",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03440403938293457
+    },
+    {
+      "id": "scenario_3",
+      "role": "Deployer",
+      "system_type": "Rule‑based layout advisor",
+      "domain": "Gardening",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03380894660949707
+    },
+    {
+      "id": "scenario_4",
+      "role": "Deployer",
+      "system_type": "Rule‑based activity recommender",
+      "domain": "Leisure",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.0337529182434082
+    },
+    {
+      "id": "scenario_5",
+      "role": "Provider",
+      "system_type": "Social credit scoring AI",
+      "domain": "Public services",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.033290863037109375
+    },
+    {
+      "id": "scenario_6",
+      "role": "Provider",
+      "system_type": "Template‑based graphic generator",
+      "domain": "Design tools",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03278803825378418
+    },
+    {
+      "id": "scenario_7",
+      "role": "Provider",
+      "system_type": "Rule‑based Q&A system",
+      "domain": "Legal Services",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03372907638549805
+    },
+    {
+      "id": "scenario_8",
+      "role": "Deployer",
+      "system_type": "Meeting emotion analytics engine",
+      "domain": "Corporate",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03370380401611328
+    },
+    {
+      "id": "scenario_9",
+      "role": "Provider",
+      "system_type": "Real‑time shopper tracking platform",
+      "domain": "Retail",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03299212455749512
+    },
+    {
+      "id": "scenario_10",
+      "role": "Provider",
+      "system_type": "Emotional vulnerability exploitation platform",
+      "domain": "Elder care",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03288698196411133
+    },
+    {
+      "id": "scenario_11",
+      "role": "Provider",
+      "system_type": "Template‑based caption generator",
+      "domain": "Social media",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03297090530395508
+    },
+    {
+      "id": "scenario_12",
+      "role": "Provider",
+      "system_type": "Behavioral audio influence platform",
+      "domain": "Supermarket",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.032774925231933594
+    },
+    {
+      "id": "scenario_13",
+      "role": "Provider",
+      "system_type": "Border‑control facial recognition AI",
+      "domain": "Migration, asylum and border‑control management",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.033447980880737305
+    },
+    {
+      "id": "scenario_14",
+      "role": "Deployer",
+      "system_type": "Crowd density biometric monitoring system",
+      "domain": "Public spaces",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.032990217208862305
+    },
+    {
+      "id": "scenario_15",
+      "role": "Deployer",
+      "system_type": "Child benefit eligibility AI",
+      "domain": "Access to and enjoyment of essential private services and essential public services and benefits",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03249716758728027
+    },
+    {
+      "id": "scenario_16",
+      "role": "Provider",
+      "system_type": "Template‑based description generator",
+      "domain": "E‑commerce",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.030740976333618164
+    },
+    {
+      "id": "scenario_17",
+      "role": "Deployer",
+      "system_type": "Rule‑based habit recommender",
+      "domain": "Personal development",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03156423568725586
+    },
+    {
+      "id": "scenario_18",
+      "role": "Deployer",
+      "system_type": "Behavioural evaluation and scoring system",
+      "domain": "Local government",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03134584426879883
+    },
+    {
+      "id": "scenario_19",
+      "role": "Deployer",
+      "system_type": "Neural machine translation model",
+      "domain": "Travel",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.0326991081237793
+    },
+    {
+      "id": "scenario_20",
+      "role": "Provider",
+      "system_type": "Template‑based infographic generator",
+      "domain": "Data visualisation",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03254103660583496
+    },
+    {
+      "id": "scenario_21",
+      "role": "Provider",
+      "system_type": "Template‑based summariser",
+      "domain": "E‑commerce",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03272294998168945
+    },
+    {
+      "id": "scenario_22",
+      "role": "Provider",
+      "system_type": "Template‑based itinerary generator",
+      "domain": "Travel",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.0328519344329834
+    },
+    {
+      "id": "scenario_23",
+      "role": "Deployer",
+      "system_type": "Similarity detection algorithm",
+      "domain": "Education",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.032724857330322266
+    },
+    {
+      "id": "scenario_24",
+      "role": "Deployer",
+      "system_type": "Online behaviour crime risk evaluator",
+      "domain": "Housing",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03415870666503906
+    },
+    {
+      "id": "scenario_25",
+      "role": "Deployer",
+      "system_type": "Call‑centre emotion detection AI",
+      "domain": "Biometrics",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03337907791137695
+    },
+    {
+      "id": "scenario_26",
+      "role": "Provider",
+      "system_type": "Personality‑based fraud risk predictor",
+      "domain": "Finance",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03338909149169922
+    },
+    {
+      "id": "scenario_27",
+      "role": "Provider",
+      "system_type": "Political orientation profiling engine",
+      "domain": "Advertising",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03304409980773926
+    },
+    {
+      "id": "scenario_28",
+      "role": "Provider",
+      "system_type": "Covert conversational influence AI",
+      "domain": "Insurance",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03341817855834961
+    },
+    {
+      "id": "scenario_29",
+      "role": "Deployer",
+      "system_type": "Emergency medical assistance eligibility AI",
+      "domain": "Access to and enjoyment of essential private services and essential public services and benefits",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.03314828872680664
+    },
+    {
+      "id": "scenario_30",
+      "role": "Deployer",
+      "system_type": "Dropout risk prediction AI",
+      "domain": "Education and vocational training",
+      "has_error": true,
+      "error": "OPENAI_API_KEY environment variable is not set.",
+      "processing_time": 0.033850908279418945
+    }
+  ]
+}
