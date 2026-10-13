@@ -321,10 +321,10 @@ Example:
 
     python scenario_evaluation.py \
       scenarios.json \
-      ../experiments/v6/scenarios_output_v6.json \
-      ../experiments/v6/recomputed_evaluation_v6.json
+      ../experiments/V6/scenarios_output_v6.json \
+      ../experiments/V6/recomputed_evaluation_v6.json
 
-The same procedure applies to v7.
+The same procedure applies to V7.
 
 Use different filenames for regenerated evaluations so
 the historical records remain unchanged.
@@ -343,9 +343,9 @@ is subject to limitations:
 - Historical model versions may become unavailable.
 - Retrieval results depend on the indexed corpus.
 - Local caches and dependency versions may differ.
-- The historical v6 source snapshot was overwritten.
+- The historical V6 source snapshot was overwritten.
 
-The full v6 and v7 outputs and evaluations are preserved,
+The full V6 and V7 outputs and evaluations are preserved,
 allowing retrospective analysis without claiming an
 identical regeneration environment.
 
@@ -413,7 +413,7 @@ must be revoked or rotated.
 
 ## 11. Testing Status
 
-The final v6 and v7 saved predictions and evaluation
+The final V6 and V7 saved predictions and evaluation
 records have been checked for consistency.
 
 The current uploaded Python source files match the
