@@ -273,13 +273,13 @@ For example:
 
     python scenario_evaluation.py \
       scenarios.json \
-      ../experiments/v7/scenarios_output_v7.json \
-      ../experiments/v7/recomputed_evaluation_v7.json
+      ../experiments/V7/scenarios_output_v7.json \
+      ../experiments/V7/recomputed_evaluation_v7.json
 
 A classification report can then be generated:
 
     python analyze_classification.py \
-      ../experiments/v7/recomputed_evaluation_v7.json
+      ../experiments/V7/recomputed_evaluation_v7.json
 
 The classification-report script has a known reporting issue
 documented in SOFTWARE_DOCUMENTATION.md.
