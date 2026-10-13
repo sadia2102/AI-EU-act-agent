@@ -23,8 +23,8 @@ All four models were run over the full benchmark set of 339 scenarios. Evaluatio
 ## Key Findings
 
 - **Risk classification accuracy** is very close for the top three models (83.48–83.78%); Mistral trails at 81.85%.
-- **Claude Sonnet-5** produces the most relevant article citations (F1 = 0.253) and has the highest obligation coverage (74.10%).
-- **GPT-5.4-mini** is fastest to evaluate while tying for best minimal-risk recall and second-best obligation coverage.
+- **Claude Sonnet-5** produces the most relevant article citations (F1 = 0.253) while GPT-5.4-mini achieves the highest obligation count coverage (83.23%).
+- **GPT-5.4-mini** achieves the shortest reported average processing time (34.46 seconds) and the highest obligation count coverage (83.23%), although its article F1 (0.247) is slightly below Claude Sonnet-5 (0.253).
 - **Llama 3.1-70B-Instruct** has the highest overall risk accuracy and the best limited-risk F1, but lower article/obligation scores.
 - **Mistral 8B-2512** has the lowest scores on article and obligation coverage and the lowest overall risk accuracy. It also had 3/339 scenarios that could not be evaluated (likely unparseable output).
 
