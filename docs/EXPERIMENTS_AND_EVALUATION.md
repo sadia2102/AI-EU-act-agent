@@ -193,8 +193,8 @@ From the backend directory, run:
 
     python scenario_evaluation.py \
       scenarios.json \
-      ../experiments/v7/scenarios_output_v7.json \
-      ../experiments/v7/recomputed_evaluation_v7.json
+      ../experiments/V7/scenarios_output_v7.json \
+      ../experiments/V7/recomputed_evaluation_v7.json
 
 For v6, use the corresponding v6 files.
 
