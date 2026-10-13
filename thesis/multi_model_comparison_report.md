@@ -22,7 +22,7 @@ All four models were run over the full benchmark set of 339 scenarios. Evaluatio
 
 ## Key Findings
 
-- **Risk classification accuracy** is very close for the top three models (83.19–83.78%); Mistral trails at 81.85%.
+- **Risk classification accuracy** is very close for the top three models (83.48–83.78%); Mistral trails at 81.85%.
 - **Claude Sonnet-5** produces the most relevant article citations (F1 = 0.253) and has the highest obligation coverage (74.10%).
 - **GPT-5.4-mini** is fastest to evaluate while tying for best minimal-risk recall and second-best obligation coverage.
 - **Llama 3.1-70B-Instruct** has the highest overall risk accuracy and the best limited-risk F1, but lower article/obligation scores.
