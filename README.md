@@ -138,8 +138,8 @@ changing the backend or model does not reproduce those experiments.
         SUBMISSION_NOTES.md
 
     experiments/
-        v6/
-        v7/
+        V6/
+        V7/
         baselines/
         development_samples/
 
