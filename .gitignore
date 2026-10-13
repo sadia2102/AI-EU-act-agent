@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.local.example
 
 # vercel
 .vercel
@@ -39,3 +40,30 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# python backend
+backend/.venv/
+backend/__pycache__/
+backend/*.pyc
+# local data / index (rebuilt from the user's corpus, not part of this repo)
+backend/chroma_db/
+backend/text_chunks.txt
+backend/_ingest_tsv.py
+
+# thesis report folder and documents (not for git)
+report/
+*.pdf
+*.docx
+
+# generated chroma db in repo root
+chroma/
+
+# generated LaTeX/build artifacts
+*.aux
+*.log
+*.out
+
+# python cache globally
+__pycache__/
+*.pyc
+.venv/

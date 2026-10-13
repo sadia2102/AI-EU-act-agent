@@ -1,0 +1,56 @@
+============================================================
+SCENARIO CLASSIFICATION PERFORMANCE ANALYSIS
+============================================================
+
+OVERALL PERFORMANCE:
+Total Scenarios: 339
+Correctly Classified: 282
+Incorrectly Classified: 114
+Classification Accuracy: 83.19%
+
+PERFORMANCE BY RISK CATEGORY:
+--------------------------------------------------
+Formula: Precision = TP/(TP+FP) | Recall = TP/(TP+FN)
+
+
+PROHIBITED:
+  True Positives (TP): 51
+  False Positives (FP): 15
+  False Negatives (FN): 19
+  Total Actual: 70
+  Total Predicted: 66
+  Precision: 0.773 (77.3%)
+  Recall: 0.729 (72.9%)
+  F1 Score: 0.750
+
+HIGH-RISK:
+  True Positives (TP): 75
+  False Positives (FP): 13
+  False Negatives (FN): 11
+  Total Actual: 86
+  Total Predicted: 88
+  Precision: 0.852 (85.2%)
+  Recall: 0.872 (87.2%)
+  F1 Score: 0.862
+
+LIMITED-RISK:
+  True Positives (TP): 61
+  False Positives (FP): 12
+  False Negatives (FN): 23
+  Total Actual: 84
+  Total Predicted: 73
+  Precision: 0.836 (83.6%)
+  Recall: 0.726 (72.6%)
+  F1 Score: 0.777
+
+MINIMAL-RISK:
+  True Positives (TP): 95
+  False Positives (FP): 17
+  False Negatives (FN): 4
+  Total Actual: 99
+  Total Predicted: 112
+  Precision: 0.848 (84.8%)
+  Recall: 0.960 (96.0%)
+  F1 Score: 0.900
+
+============================================================

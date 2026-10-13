@@ -1,0 +1,170 @@
+# Backend API (EU AI Act Assistant)
+
+A thin [FastAPI](https://fastapi.tiangolo.com/) wrapper around the existing RAG
+pipeline so the Next.js frontend can call it over HTTP. It reuses your own
+modules — it does **not** reimplement retrieval or the LLM call.
+
+## 1. Put your pipeline files here
+
+Copy your existing scripts into this `backend/` folder next to `server.py`:
+
+```
+backend/
+  server.py                 # provided (the API)
+  requirements.txt          # provided
+  rag_chat.py               # YOURS  (pre_retrieve, build_context, LLM config)
+  scenario_batch_rag.py     # YOURS  (risk classification + obligations + articles)
+  openai_deep_research.py   # YOURS  (run_deep_research — optional fallback)
+  batch_rag.py              # YOURS  (optional)
+```
+
+> **`scenario_batch_rag.py` is what produces the full scenario output**
+> (role / intended_use / system_type / input_data / domain / related_articles /
+> obligations / risk_level), reusing its `build_scenario_query`,
+> `build_scenario_messages`, `extract_*`, and `calibrate_risk_level`. If it's not
+> present, the API degrades to a simpler strict-JSON classification.
+
+> **Security:** remove the hardcoded `OPENAI_API_KEY = "sk-..."` line from
+> `rag_chat.py`. The code already falls back to `os.environ["OPENAI_API_KEY"]`.
+> Rotate that key — it was committed in plaintext.
+
+## 2. Install & configure
+
+```bash
+cd backend
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+
+export OPENAI_API_KEY="sk-..."           # required (OpenAI backend)
+# export CORS_ORIGINS="http://localhost:3000"   # optional, this is the default
+```
+
+Make sure ChromaDB is running and populated (the collection `research_chunks`
+on `localhost:8000`, as configured in `rag_chat.py`). Point `--path` at the
+folder that holds your existing data:
+
+```bash
+chroma run --path "/path/to/your/chroma_db" --host localhost --port 8000
+```
+
+Verify the collection actually has your chunks (must print a non-zero number):
+
+```bash
+python -c "import chromadb; c=chromadb.HttpClient(host='localhost',port=8000); print(c.get_collection('research_chunks').count())"
+```
+
+### Rebuild the index from `text_chunks.tsv`
+
+If the count is `0` or the collection is missing, repopulate it from your TSV
+(tab-separated `doc_id<TAB>text` lines). Copy `text_chunks.tsv` into `backend/`
+and run, while `chroma run` is up:
+
+```bash
+python ingest_tsv.py
+```
+
+This creates the `research_chunks` collection with the metadata the pipeline
+expects (`source=thesis_text_chunks_v1`, `doc_id`, `chunk_index`, `length`) and
+embeds with `all-MiniLM-L6-v2`.
+
+## 3. Run the API
+
+`rag_chat.py` points Chroma at port 8000, so run the API on a **different port**
+(e.g. 8008):
+
+```bash
+uvicorn server:app --host 0.0.0.0 --port 8008 --reload
+```
+
+Quick check:
+
+```bash
+curl localhost:8008/health
+curl -X POST localhost:8008/chat -H 'Content-Type: application/json' \
+  -d '{"message":"What transparency obligations apply to GPAI providers?"}'
+```
+
+## 4. Point the frontend at it
+
+In the repo root, create `.env.local`:
+
+```
+NEXT_PUBLIC_API_URL=http://localhost:8008
+```
+
+Then `npm run dev`. When `NEXT_PUBLIC_API_URL` is set the UI calls this API; if
+it is unset or unreachable, the UI falls back to its built-in mock so the demo
+still works offline.
+
+## API
+
+`POST /chat`
+
+```jsonc
+// request
+{ "message": "string", "document_text": "optional string", "fast": false }
+
+// response
+{
+  "analysis": "string with [source; doc_id; chunk_index=K] citations",
+  "risk_level": "prohibited | high-risk | limited-risk | minimal-risk | unknown",
+  "obligations": ["...", "..."],
+  "articles": [5, 10, 27],
+  "sources": [{ "index": 1, "source": "...", "doc_id": "...", "chunk_index": 3, "score": 0.7 }],
+  "used_deep_research": false,
+  "processing_time": 2.5,
+  // full scenario schema (the UI's "Copy JSON" button copies this)
+  "scenario": {
+    "role": "Provider",
+    "intended_use": "...",
+    "system_type": "...",
+    "input_data": "...",
+    "domain": "...",
+    "related_articles": [5, 10, 27],
+    "obligations": ["..."],
+    "risk_level": "prohibited"
+  }
+}
+```
+
+The server first asks the LLM to extract the scenario fields from the user's
+message (and any attached document), builds the retrieval query with
+`build_scenario_query`, then runs retrieval + a **structured-JSON
+classification** prompt (the proven `batch_rag.py` technique). It parses the
+risk level / obligations / articles directly, falls back to the
+`scenario_batch_rag.py` regex extractors if the model omits a field, and
+calibrates the risk level with `calibrate_risk_level`.
+
+Two reliability tweaks for the chat setting (vs. the batch benchmark, which is
+fed rich, hand-authored scenario fields):
+
+- the **raw user description is included** alongside the extracted fields when
+  classifying, so terse extraction can't hide legally-critical mechanism
+  details (e.g. "embeds low-frequency tones");
+- a **model-asserted `prohibited` is never downgraded** by calibration — its
+  metadata inference can wrongly override a correct prohibited call when the
+  chat-extracted fields are sparse.
+
+Uploaded documents: the frontend sends the plain text of attached files as
+`document_text`; the server adds it as an extra citeable source
+(`user-upload`) so the model can classify the user's own scenario.
+
+## 5. Evaluate classification accuracy
+
+`eval_bench.py` scores the classifier against a benchmark file (e.g. the
+project's `scenarios.json`, an array under a `data` key with `risk_level`
+labels). It caches the embedding/reranker models so a run isn't bottlenecked by
+reloading them every scenario.
+
+```bash
+# the live server technique (what /chat uses)
+python eval_bench.py scenarios.json --method server --per-class 15
+
+# the original proven batch_rag.py technique (needs batch_rag.py present)
+python eval_bench.py scenarios.json --method batch --limit 40
+```
+
+`--per-class N` takes N scenarios from each risk tier for a class-balanced
+sample; omit it to run the whole file. Methods: `server` (current), `batch`
+(reference), `old` (previous free-form prompt), `live` (full path incl. field
+extraction), `v2` (prompt-only ablation).

@@ -1,0 +1,476 @@
+{
+  "license": "Creative Commons Attribution 4.0 International, available at https://creativecommons.org/licenses/by/4.0/",
+  "data": [
+    {
+        "role": "Provider",
+        "intended_use": "Deploy a hidden‑audio influence platform that subtly nudges shoppers to purchase high‑margin products without their conscious awareness",
+        "system_type": "Subconscious influence engine",
+        "input_data": "Audio streams, browsing history, purchase records, demographic profiles",
+        "domain": "Retail",
+        "related_articles": [5, 10, 16, 27, 50],
+        "obligations": [
+            "Immediately halt any deployment of the audio influence engine that uses subliminal techniques beyond users' consciousness, as this practice is prohibited under Article 5(a).",
+            "If the system is to be continued, redesign it to eliminate any subliminal or manipulative influence that could materially distort shopper behaviour without informed consent, ensuring compliance with Article 5.",
+            "Conduct a comprehensive data‑governance review of all training, validation and testing data (audio streams, browsing history, purchase records, demographic profiles) to verify they meet the quality, bias‑mitigation and special‑category safeguards set out in Article 10.",
+            "Document the data‑management processes, including data origin, preprocessing, bias‑assessment and mitigation measures, and retain these records for inspection as required by Article 10(2‑4).",
+            "Implement a quality‑management system, maintain technical documentation, keep system logs, and perform the appropriate conformity‑assessment procedure before placing the system on the market, in line with Article 16(a‑g).",
+            "Register the high‑risk AI system in the EU database and draw up an EU declaration of conformity, affixing the CE marking as mandated by Article 16(i‑h).",
+            "If the provider is a public‑law body or offers the system as a public service, carry out a fundamental‑rights impact assessment covering autonomy, privacy and discrimination risks, and notify the market‑surveillance authority of the results per Article 27.",
+            "Provide clear, conspicuous information to shoppers at the first point of interaction that they are being exposed to an AI‑driven audio influence system, as required by Article 50(1).",
+            "Ensure all personal data processing complies with the GDPR (Regulation EU 2016/679) – obtain a lawful basis or explicit consent, respect data‑subject rights, and apply pseudonymisation or encryption where appropriate.",
+            "Establish human‑oversight mechanisms that allow operators to monitor, intervene, or disable the influence engine in real‑time, and document these controls to demonstrate compliance with Articles 16 and 27."
+        ],
+        "risk_level": "prohibited"
+    },
+    {
+        "role": "Deployer",
+        "intended_use": "Use a visual cue manipulation system that embeds subliminal images in online news feeds to sway political opinions",
+        "system_type": "Subliminal visual persuasion tool",
+        "input_data": "News article content, user click data, location data, political affiliation indicators",
+        "domain": "Media",
+        "related_articles": [5, 13, 26, 27, 50],
+        "obligations": [
+            "Immediately cease any placement on the market, putting into service, or use of the visual cue manipulation system, as it constitutes a prohibited AI practice that deploys subliminal techniques to materially distort political behaviour (Article 5(a)).",
+            "Remove the system from all operational environments and delete any related data, including logs and personal data, to ensure no further processing occurs.",
+            "Conduct an internal audit to confirm that no prohibited AI practices are being carried out and document the findings for accountability.",
+            "If the system has already been used, notify the relevant national market‑surveillance authority and the national data‑protection authority, providing the required information and ensuring the prompt deletion of all collected data (Article 5, paragraphs 4‑5).",
+            "If the organization wishes to develop or deploy any AI tool for political content that is not prohibited, perform a Fundamental Rights Impact Assessment covering the intended use, affected groups, potential harms, and mitigation measures (Article 27).",
+            "Provide clear, accessible information to all users before their first exposure that they are interacting with an AI system, describing its purpose, capabilities, limitations, and any human‑oversight mechanisms (Article 13 and Article 50(1‑5)).",
+            "Ensure all personal data processing complies with the GDPR (Regulation EU 2016/679) – obtain a lawful basis or explicit consent, respect data‑subject rights, and apply pseudonymisation or encryption where appropriate."
+        ],
+        "risk_level": "prohibited"
+    },
+    {
+        "role": "Provider",
+        "intended_use": "Develop a medical diagnostic AI that analyses patient scans to detect early-stage cancer",
+        "system_type": "Medical imaging diagnostic system",
+        "input_data": "Medical imaging data (X-rays, MRIs, CT scans), patient records, clinical notes",
+        "domain": "Healthcare",
+        "related_articles": [6, 10, 16, 27],
+        "obligations": [
+            "Classify the system as high‑risk under Article 6(1)(a) as it is intended for medical diagnosis purposes.",
+            "Conduct a comprehensive conformity assessment by a notified body before placing the system on the market (Article 16).",
+            "Implement a risk management system in accordance with Article 9, including risk identification, evaluation, and mitigation measures.",
+            "Ensure the training, validation and testing data sets meet the quality and governance requirements of Article 10, with particular attention to bias mitigation and data governance.",
+            "Maintain technical documentation in accordance with Article 11, including instructions for use, performance data, and conformity assessment results.",
+            "Register the system in the EU high‑risk AI database before placing it on the market (Article 16(i)).",
+            "Provide clear instructions for use and information to users in accordance with Article 13.",
+            "Implement appropriate human oversight measures in accordance with Article 14.",
+            "Establish a post‑market monitoring plan and report serious incidents to market‑surveillance authorities (Article 20).",
+            "Conduct a fundamental rights impact assessment in accordance with Article 27, given the potential impact on health and safety."
+        ],
+        "risk_level": "high-risk"
+    },
+    {
+        "role": "Provider",
+        "intended_use": "Deploy an AI‑powered chatbot for customer service that answers common queries about product features",
+        "system_type": "Customer service conversational AI",
+        "input_data": "Customer queries, product manuals, FAQ databases, previous chat logs",
+        "domain": "Retail",
+        "related_articles": [50],
+        "obligations": [
+            "Provide clear information to users that they are interacting with an AI system (Article 50(1)).",
+            "Ensure the AI system does not generate or manipulate content in a way that could materially distort user behaviour without informed consent.",
+            "Maintain the ability for human oversight upon user request (Article 14)."
+        ],
+        "risk_level": "limited-risk"
+    },
+    {
+        "role": "Deployer",
+        "intended_use": "Use an AI‑enabled video game with adaptive difficulty based on player performance",
+        "system_type": "Adaptive gaming AI",
+        "input_data": "Player performance metrics, game state data, user preferences",
+        "domain": "Entertainment",
+        "related_articles": [],
+        "obligations": [
+            "No specific obligations under the AI Act as this is considered minimal‑risk AI.",
+            "Follow general consumer protection and data protection laws (e.g., GDPR).",
+            "Provide transparent information about AI use if relevant."
+        ],
+        "risk_level": "minimal-risk"
+    },
+    {
+        "role": "Provider",
+        "intended_use": "Implement an AI system that screens job applicants using facial recognition and automated decision-making",
+        "system_type": "Biometric employment screening system",
+        "input_data": "Facial images, resumes, employment history, assessment criteria",
+        "domain": "Human Resources",
+        "related_articles": [6, 10, 11, 14, 27],
+        "obligations": [
+            "Classify as high‑risk under Article 6(1)(b) for employment decisions (Article 6).",
+            "Obtain prior conformity assessment by a notified body (Article 16).",
+            "Implement data governance and bias mitigation measures (Article 10).",
+            "Maintain technical documentation and provide user instructions (Articles 11, 13).",
+            "Register in EU database and affix CE marking (Article 16).",
+            "Ensure human oversight and intervention capability (Article 14).",
+            "Conduct fundamental rights impact assessment (Article 27).",
+            "Provide data subjects with rights under GDPR and obtain explicit consent for biometric processing."
+        ],
+        "risk_level": "high-risk"
+    },
+    {
+        "role": "Provider",
+        "intended_use": "Create an AI writing assistant that generates marketing emails based on product descriptions",
+        "system_type": "Content generation AI",
+        "input_data": "Product specifications, marketing templates, brand guidelines",
+        "domain": "Marketing",
+        "related_articles": [50],
+        "obligations": [
+            "Ensure AI‑generated content is clearly identifiable as such (Article 50(2)).",
+            "Provide transparency about the use of AI to recipients (Article 50(1)).",
+            "Comply with copyright laws when training the AI."
+        ],
+        "risk_level": "limited-risk"
+    },
+    {
+        "role": "Deployer",
+        "intended_use": "Use an AI navigation system that provides route optimization for delivery trucks",
+        "system_type": "Logistics optimization AI",
+        "input_data": "Traffic data, GPS coordinates, delivery schedules, vehicle specifications",
+        "domain": "Transportation",
+        "related_articles": [],
+        "obligations": [
+            "No specific AI Act obligations as this is minimal‑risk AI.",
+            "Follow general transportation and data protection regulations.",
+            "Ensure system reliability and safety standards."
+        ],
+        "risk_level": "minimal-risk"
+    },
+    {
+        "role": "Provider",
+        "intended_use": "Develop an AI system for credit scoring that determines loan eligibility",
+        "system_type": "Credit scoring AI",
+        "input_data": "Financial history, credit reports, employment data, demographic information",
+        "domain": "Finance",
+        "related_articles": [6, 10, 11, 14, 27],
+        "obligations": [
+            "Classify as high‑risk under Article 6(1)(b) for credit scoring decisions (Article 6).",
+            "Obtain conformity assessment by a notified body (Article 16).",
+            "Implement robust data governance and bias mitigation (Article 10).",
+            "Maintain technical documentation and provide user instructions (Articles 11, 13).",
+            "Register in EU database and affix CE marking (Article 16).",
+            "Ensure human oversight and explainability (Article 14).",
+            "Conduct fundamental rights impact assessment (Article 27).",
+            "Comply with GDPR and financial regulations."
+        ],
+        "risk_level": "high-risk"
+    },
+    {
+        "role": "Deployer",
+        "intended_use": "Deploy AI-powered surveillance cameras in public spaces for crowd monitoring",
+        "system_type": "Public space surveillance AI",
+        "input_data": "Video feeds, location data, time stamps, crowd density metrics",
+        "domain": "Public Safety",
+        "related_articles": [6, 10, 11, 14, 27],
+        "obligations": [
+            "Classify as high‑risk under Article 6(1)(c) for law enforcement purposes (Article 6).",
+            "Ensure proper conformity assessment and notification (Article 16).",
+            "Implement data protection and privacy safeguards (Article 10).",
+            "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "Register in EU database and ensure human oversight (Article 14, 16).",
+            "Conduct fundamental rights impact assessment (Article 27).",
+            "Comply with GDPR and public space regulations."
+        ],
+        "risk_level": "high-risk"
+    },
+    {
+        "role": "Provider",
+        "intended_use": "Create an AI system that generates social media posts automatically",
+        "system_type": "Social media content generator",
+        "input_data": "Brand guidelines, trending topics, user engagement data, content templates",
+        "domain": "Social Media",
+        "related_articles": [50],
+        "obligations": [
+            "Ensure AI‑generated content is clearly identifiable (Article 50(2)).",
+            "Provide transparency about AI use to followers (Article 50(1)).",
+            "Comply with platform policies and content regulations."
+        ],
+        "risk_level": "limited-risk"
+    },
+    {
+        "role": "Deployer",
+        "intended_use": "Use AI for spam filtering in email systems",
+        "system_type": "Email spam filter",
+        "input_data": "Email content, sender information, user feedback, spam patterns",
+        "domain": "Communication",
+        "related_articles": [],
+        "obligations": [
+            "No specific AI Act obligations as this is minimal‑risk AI.",
+            "Follow email regulations and data protection laws.",
+            "Ensure system accuracy and false positive management."
+        ],
+        "risk_level": "minimal-risk"
+    },
+    {
+        "role": "Provider",
+        "intended_use": "Develop an AI system for student assessment and grading",
+        "system_type": "Educational assessment AI",
+        "input_data": "Student responses, test questions, grading rubrics, performance data",
+        "domain": "Education",
+        "related_articles": [6, 10, 11, 14, 27],
+        "obligations": [
+            "Classify as high‑risk under Article 6(1)(b) for educational assessment (Article 6).",
+            "Obtain conformity assessment by a notified body (Article 16).",
+            "Implement fair assessment and bias mitigation (Article 10).",
+            "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "Register in EU database and ensure human oversight (Article 14, 16).",
+            "Conduct fundamental rights impact assessment (Article 27).",
+            "Comply with educational regulations and GDPR."
+        ],
+        "risk_level": "high-risk"
+    },
+    {
+        "role": "Provider",
+        "intended_use": "Create an AI system that recommends products based on browsing history",
+        "system_type": "E-commerce recommendation engine",
+        "input_data": "User browsing data, purchase history, product information, user preferences",
+        "domain": "Retail",
+        "related_articles": [50],
+        "obligations": [
+            "Provide transparency about AI use in recommendations (Article 50(1)).",
+            "Ensure recommendations do not manipulate users (Article 5).",
+            "Comply with consumer protection and data protection laws."
+        ],
+        "risk_level": "limited-risk"
+    },
+    {
+        "role": "Deployer",
+        "intended_use": "Use AI for inventory management in warehouses",
+        "system_type": "Inventory optimization AI",
+        "input_data": "Stock levels, sales data, supply chain information, demand forecasts",
+        "domain": "Logistics",
+        "related_articles": [],
+        "obligations": [
+            "No specific AI Act obligations as this is minimal‑risk AI.",
+            "Follow business and data protection regulations.",
+            "Ensure system reliability and accuracy."
+        ],
+        "risk_level": "minimal-risk"
+    },
+    {
+        "role": "Provider",
+        "intended_use": "Develop an AI system for legal document analysis and contract review",
+        "system_type": "Legal document analyzer",
+        "input_data": "Legal documents, contracts, case law, legal precedents",
+        "domain": "Legal",
+        "related_articles": [6, 10, 11, 14, 27],
+        "obligations": [
+            "Classify as high‑risk under Article 6(1)(b) for legal decision support (Article 6).",
+            "Obtain conformity assessment by a notified body (Article 16).",
+            "Ensure accuracy and reliability of legal analysis (Article 10).",
+            "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "Register in EU database and ensure human oversight (Article 14, 16).",
+            "Conduct fundamental rights impact assessment (Article 27).",
+            "Comply with legal profession regulations and GDPR."
+        ],
+        "risk_level": "high-risk"
+    },
+    {
+        "role": "Deployer",
+        "intended_use": "Use AI for fraud detection in financial transactions",
+        "system_type": "Financial fraud detection AI",
+        "input_data": "Transaction data, user behavior patterns, fraud indicators, risk scores",
+        "domain": "Finance",
+        "related_articles": [6, 10, 11, 14, 27],
+        "obligations": [
+            "Classify as high‑risk under Article 6(1)(b) for financial risk assessment (Article 6).",
+            "Ensure proper conformity assessment and notification (Article 16).",
+            "Implement robust fraud detection accuracy (Article 10).",
+            "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "Register in EU database and ensure human oversight (Article 14, 16).",
+            "Conduct fundamental rights impact assessment (Article 27).",
+            "Comply with financial regulations and GDPR."
+        ],
+        "risk_level": "high-risk"
+    },
+    {
+        "role": "Provider",
+        "intended_use": "Create an AI system that generates news articles automatically",
+        "system_type": "Automated news generator",
+        "input_data": "News sources, trending topics, style guides, factual databases",
+        "domain": "Media",
+        "related_articles": [50],
+        "obligations": [
+            "Ensure AI‑generated news is clearly identified (Article 50(2)).",
+            "Provide transparency about AI use to readers (Article 50(1)).",
+            "Comply with journalism ethics and media regulations.",
+            "Ensure factual accuracy and avoid misinformation."
+        ],
+        "risk_level": "limited-risk"
+    },
+    {
+        "role": "Deployer",
+        "intended_use": "Use AI for predictive maintenance in manufacturing",
+        "system_type": "Predictive maintenance AI",
+        "input_data": "Sensor data, equipment performance, maintenance records, failure patterns",
+        "domain": "Manufacturing",
+        "related_articles": [],
+        "obligations": [
+            "No specific AI Act obligations as this is minimal‑risk AI.",
+            "Follow industrial safety and data protection regulations.",
+            "Ensure system reliability and maintenance planning."
+        ],
+        "risk_level": "minimal-risk"
+    },
+    {
+        "role": "Provider",
+        "intended_use": "Develop an AI system for medical device control and monitoring",
+        "system_type": "Medical device control AI",
+        "input_data": "Patient vital signs, device performance data, medical protocols",
+        "domain": "Healthcare",
+        "related_articles": [6, 10, 16, 27],
+        "obligations": [
+            "Classify as high‑risk under Article 6(1)(a) for medical device control (Article 6).",
+            "Obtain conformity assessment by a notified body (Article 16).",
+            "Ensure medical device safety and reliability (Article 10).",
+            "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "Register in EU database and ensure human oversight (Article 14, 16).",
+            "Conduct fundamental rights impact assessment (Article 27).",
+            "Comply with medical device regulations and GDPR."
+        ],
+        "risk_level": "high-risk"
+    },
+    {
+        "role": "Deployer",
+        "intended_use": "Use AI for energy consumption optimization in buildings",
+        "system_type": "Building energy optimizer",
+        "input_data": "Energy usage data, weather forecasts, occupancy patterns, building specifications",
+        "domain": "Energy",
+        "related_articles": [],
+        "obligations": [
+            "No specific AI Act obligations as this is minimal‑risk AI.",
+            "Follow energy efficiency and data protection regulations.",
+            "Ensure system reliability and energy savings."
+        ],
+        "risk_level": "minimal-risk"
+    },
+    {
+        "role": "Provider",
+        "intended_use": "Create an AI system for autonomous vehicle navigation",
+        "system_type": "Autonomous vehicle AI",
+        "input_data": "Sensor data, GPS information, traffic conditions, road maps",
+        "domain": "Transportation",
+        "related_articles": [6, 10, 11, 14, 27],
+        "obligations": [
+            "Classify as high‑risk under Article 6(1)(c) for transportation safety (Article 6).",
+            "Obtain conformity assessment by a notified body (Article 16).",
+            "Ensure vehicle safety and reliability (Article 10).",
+            "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "Register in EU database and ensure human oversight (Article 14, 16).",
+            "Conduct fundamental rights impact assessment (Article 27).",
+            "Comply with automotive regulations and GDPR."
+        ],
+        "risk_level": "high-risk"
+    },
+    {
+        "role": "Deployer",
+        "intended_use": "Use AI for crop yield prediction in agriculture",
+        "system_type": "Agricultural yield predictor",
+        "input_data": "Weather data, soil conditions, crop health metrics, historical yields",
+        "domain": "Agriculture",
+        "related_articles": [],
+        "obligations": [
+            "No specific AI Act obligations as this is minimal‑risk AI.",
+            "Follow agricultural and environmental regulations.",
+            "Ensure prediction accuracy and reliability."
+        ],
+        "risk_level": "minimal-risk"
+    },
+    {
+        "role": "Provider",
+        "intended_use": "Develop an AI system for border control and immigration screening",
+        "system_type": "Border control AI",
+        "input_data": "Travel documents, biometric data, travel history, security information",
+        "domain": "Border Control",
+        "related_articles": [6, 10, 11, 14, 27],
+        "obligations": [
+            "Classify as high‑risk under Article 6(1)(c) for border control (Article 6).",
+            "Obtain conformity assessment by a notified body (Article 16).",
+            "Ensure security and privacy protections (Article 10).",
+            "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "Register in EU database and ensure human oversight (Article 14, 16).",
+            "Conduct fundamental rights impact assessment (Article 27).",
+            "Comply with immigration and security regulations."
+        ],
+        "risk_level": "high-risk"
+    },
+    {
+        "role": "Deployer",
+        "intended_use": "Use AI for personalized learning recommendations in education",
+        "system_type": "Educational content recommender",
+        "input_data": "Student performance, learning preferences, curriculum data, engagement metrics",
+        "domain": "Education",
+        "related_articles": [50],
+        "obligations": [
+            "Provide transparency about AI use in recommendations (Article 50(1)).",
+            "Ensure recommendations support educational goals (Article 5).",
+            "Comply with educational regulations and GDPR."
+        ],
+        "risk_level": "limited-risk"
+    },
+    {
+        "role": "Provider",
+        "intended_use": "Create an AI system for insurance risk assessment",
+        "system_type": "Insurance risk assessor",
+        "input_data": "Claims history, risk factors, demographic data, policy information",
+        "domain": "Insurance",
+        "related_articles": [6, 10, 11, 14, 27],
+        "obligations": [
+            "Classify as high‑risk under Article 6(1)(b) for insurance decisions (Article 6).",
+            "Obtain conformity assessment by a notified body (Article 16).",
+            "Ensure fair risk assessment and bias mitigation (Article 10).",
+            "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "Register in EU database and ensure human oversight (Article 14, 16).",
+            "Conduct fundamental rights impact assessment (Article 27).",
+            "Comply with insurance regulations and GDPR."
+        ],
+        "risk_level": "high-risk"
+    },
+    {
+        "role": "Deployer",
+        "intended_use": "Use AI for traffic flow optimization in smart cities",
+        "system_type": "Traffic optimization AI",
+        "input_data": "Traffic data, sensor information, weather conditions, urban infrastructure",
+        "domain": "Urban Planning",
+        "related_articles": [],
+        "obligations": [
+            "No specific AI Act obligations as this is minimal‑risk AI.",
+            "Follow urban planning and data protection regulations.",
+            "Ensure system reliability and traffic efficiency."
+        ],
+        "risk_level": "minimal-risk"
+    },
+    {
+        "role": "Provider",
+        "intended_use": "Develop an AI system for criminal justice risk assessment",
+        "system_type": "Criminal justice risk assessor",
+        "input_data": "Criminal records, risk factors, demographic data, case information",
+        "domain": "Criminal Justice",
+        "related_articles": [6, 10, 11, 14, 27],
+        "obligations": [
+            "Classify as high‑risk under Article 6(1)(c) for law enforcement (Article 6).",
+            "Obtain conformity assessment by a notified body (Article 16).",
+            "Ensure fair risk assessment and bias mitigation (Article 10).",
+            "Maintain technical documentation and user instructions (Articles 11, 13).",
+            "Register in EU database and ensure human oversight (Article 14, 16).",
+            "Conduct fundamental rights impact assessment (Article 27).",
+            "Comply with criminal justice regulations and GDPR."
+        ],
+        "risk_level": "high-risk"
+    },
+    {
+        "role": "Deployer",
+        "intended_use": "Use AI for personalized healthcare recommendations",
+        "system_type": "Healthcare recommender",
+        "input_data": "Patient health data, medical history, treatment options, clinical guidelines",
+        "domain": "Healthcare",
+        "related_articles": [50],
+        "obligations": [
+            "Provide transparency about AI use in recommendations (Article 50(1)).",
+            "Ensure recommendations support medical decisions (Article 5).",
+            "Comply with medical regulations and GDPR."
+        ],
+        "risk_level": "limited-risk"
+    }
+  ]
+}
