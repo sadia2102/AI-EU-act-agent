@@ -4,27 +4,24 @@
     "result_file": "scenarios_output_openai_gpt-5.4-mini.json",
     "eval_file": "scenario_evaluation_gpt-5.4-mini.json",
     "report_file": "classification_report_gpt-5.4-mini.txt",
-    "risk_level_accuracy": null
   },
   {
     "model": "llama-3.1-70b",
     "result_file": "scenarios_output_meta-llama_llama-3.1-70b-instruct.json",
     "eval_file": "scenario_evaluation_llama-3.1-70b.json",
     "report_file": "classification_report_llama-3.1-70b.txt",
-    "risk_level_accuracy": null
   },
   {
     "model": "claude-sonnet-5",
     "result_file": "scenarios_output_anthropic_claude-sonnet-5.json",
     "eval_file": "scenario_evaluation_claude-sonnet-5.json",
     "report_file": "classification_report_claude-sonnet-5.txt",
-    "risk_level_accuracy": null
   },
   {
     "model": "mistral-8b-2512",
     "result_file": "scenarios_output_mistralai_ministral-8b-2512.json",
     "eval_file": "scenario_evaluation_mistral-8b-2512.json",
     "report_file": "classification_report_mistral-8b-2512.txt",
-    "risk_level_accuracy": null
+    "risk_level_accuracy": 81.85
   }
 ]

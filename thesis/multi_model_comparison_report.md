@@ -6,7 +6,7 @@ All four models were run over the full benchmark set of 339 scenarios. Evaluatio
 
 | Model | Evaluated | Risk Accuracy | Article F1 | Obligation Coverage | Avg. Processing Time |
 |-------|-----------|--------------:|-----------:|--------------------:|---------------------:|
-| GPT-5.4-mini | 339/339 (100%) | 83.48% | 0.247 | 83.23% | 151.0 s |
+| GPT-5.4-mini | 339/339 (100%) | 83.48% | 0.247 | 83.23% | 34.46 s |
 | Llama 3.1-70B-Instruct | 339/339 (100%) | **83.78%** | 0.161 | 57.73% | 141.1 s |
 | Claude Sonnet-5 | 339/339 (100%) | 83.48% | **0.253** | **74.10%** | 284.3 s |
 | Mistral 8B-2512 | 336/339 (99.1%) | 81.85% | 0.160 | 34.09% | 158.7 s |
