@@ -6,7 +6,7 @@ from pathlib import Path
 BENCHMARK = "scenarios.json"
 
 MODELS = {
-    "gpt-5.4-mini": "scenarios_output_v7.json",
+    "gpt-5.4-mini": "../experiments/V7/scenarios_output_v7.json",
     "llama-3.1-70b": "scenarios_output_meta-llama_llama-3.1-70b-instruct.json",
     "claude-sonnet-5": "scenarios_output_anthropic_claude-sonnet-5.json",
     "mistral-8b-2512": "scenarios_output_mistralai_ministral-8b-2512.json",
